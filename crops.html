@@ -409,198 +409,75 @@
                 <div class="row">
                     <div class="col col-md-12">
                         <div class="table-responsive mb-5">
-                            <div class="d-flex justify-content-end">
+                            <!-- Search bar -->
+                            <div class="d-flex justify-content-end mb-3">
                                 <div class="form-group col-3">
-                                    <label for="medical-consumables-search">Search</label>
-                                    <input type="text" class="form-control" id="medical-consumables-search" placeholder="Search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="medical-consumables-search" placeholder="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <table class="table">
-                                <thead class="bg-primary text-light" style="background: #0b7dfd !important;">
-                                <tr >
-                                    <th>
-                                        Crop Code
-                                    </th>
-                                    <th>
-                                        Common Name
-                                    </th>
-                                    <th>
-                                        Category
-                                    </th>
-                                    <th>
-                                        Season
-                                    </th>
-                                    <th>
-                                        Field
-                                    </th>
-                                    <th>
-                                        Action
-                                    </th>
+                            <!-- Table -->
+                            <table class="table table-bordered table-hover">
+                                <thead class="bg-primary text-light">
+                                <tr>
+                                    <th>Crop Code</th>
+                                    <th>Common Name</th>
+                                    <th>Category</th>
+                                    <th>Season</th>
+                                    <th>Field</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
-                                <tbody style="background: white !important;">
+                                <tbody>
                                 <tr>
                                     <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image"/>
+                                        <img src="../../images/faces/face1.jpg" alt="Crop Image" class="img-thumbnail" style="width: 50px; height: 50px;">
                                     </td>
+                                    <td>Herman Beck</td>
                                     <td>
-                                        Herman Beck
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </td>
+                                    <td>Spring</td>
+                                    <td>North Field</td>
                                     <td>
-                                        $ 77.99
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px">View
+                                        <button class="btn btn-primary btn-sm" title="View">
+                                            <i class="fa fa-eye"></i>
                                         </button>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px;">Update
+                                        <button class="btn btn-primary btn-sm" title="Update">
+                                            <i class="fa fa-edit"></i>
                                         </button>
-                                        <button type="submit" class="btn btn-danger" style="font-size: 10px">Delete
+                                        <button class="btn btn-danger btn-sm" title="Delete">
+                                            <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image"/>
-                                    </td>
-                                    <td>
-                                        Herman Beck
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $ 77.99
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px">View
-                                        </button>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px;">Update
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" style="font-size: 10px">Delete
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image"/>
-                                    </td>
-                                    <td>
-                                        Herman Beck
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $ 77.99
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px">View
-                                        </button>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px;">Update
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" style="font-size: 10px">Delete
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image"/>
-                                    </td>
-                                    <td>
-                                        Herman Beck
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $ 77.99
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px">View
-                                        </button>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px;">Update
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" style="font-size: 10px">Delete
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="py-1">
-                                        <img src="../../images/faces/face1.jpg" alt="image"/>
-                                    </td>
-                                    <td>
-                                        Herman Beck
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $ 77.99
-                                    </td>
-                                    <td>
-                                        May 15, 2015
-                                    </td>
-                                    <td>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px">View
-                                        </button>
-                                        <button type="submit" class="btn btn-primary" style="font-size: 10px;">Update
-                                        </button>
-                                        <button type="submit" class="btn btn-danger" style="font-size: 10px">Delete
-                                        </button>
-                                    </td>
-                                </tr>
+                                <!-- Repeat rows as needed -->
                                 </tbody>
                             </table>
+
+                            <!-- Pagination -->
                             <div aria-label="Page navigation example">
                                 <ul class="pagination justify-content-end mt-3">
-                                    <li class="page-item active">
+                                    <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Previous">
                                             <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
                                         </a>
                                     </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item active">
+                                    <li class="page-item">
                                         <a class="page-link" href="#" aria-label="Next">
                                             <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -608,6 +485,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </div>
 
@@ -747,10 +625,10 @@
 <script src="js/template.js"></script>
 <script src="js/settings.js"></script>
 <script src="js/todolist.js"></script>
-<script src="../../js/file-upload.js"></script>
+<!--<script src="../../js/file-upload.js"></script>-->
 <!-- endinject -->
 <!-- Custom js for this page-->
-<script src="js/custom/fileAppender/fileApennder.js"></script>
+<script src="custom/js/fileAppender/fileApennder.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/Chart.roundedBarCharts.js"></script>
 
