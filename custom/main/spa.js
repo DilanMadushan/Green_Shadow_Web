@@ -12,6 +12,8 @@ function navigateToPage(page) {
     $('#log_registerSection').css('display', 'none');
     $('#staff_section').css('display', 'none');
     $('#staff_registerSection').css('display', 'none');
+    $('#equipment_section').css('display', 'none');
+    $('#equipment_registerSection').css('display', 'none');
 
     $(page).css('display', 'block');
 }
@@ -75,6 +77,16 @@ $('#staff_nav').click(function (){
 
 $('#add_staff').click(function (){
     navigateToPage('#staff_registerSection');
+    activeNavBarButton('#staff_nav');
+})
+
+$('#equipment_nav').click(function (){
+    navigateToPage('#equipment_section');
+    activeNavBarButton('#equipment_nav');
+})
+
+$('#add_equipment').click(function (){
+    navigateToPage('#equipment_registerSection');
     activeNavBarButton('#staff_nav');
 })
 
