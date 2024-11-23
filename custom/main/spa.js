@@ -6,6 +6,11 @@ function navigateToPage(page) {
     $('#dash_board').css('display', 'none');
     $('#crop_section').css('display', 'none');
     $('#crop_registerSection').css('display', 'none');
+    $('#field_section').css('display', 'none');
+    $('#field_registerSection').css('display', 'none');
+    $('#log_section').css('display', 'none');
+    $('#log_registerSection').css('display', 'none');
+
     $(page).css('display', 'block');
 }
 
@@ -40,6 +45,26 @@ $('#add_crop').click(function () {
     navigateToPage('#crop_registerSection');
     activeNavBarButton('#crop_nav');
 });
+
+$('#field_nav').click(function (){
+    navigateToPage('#field_section');
+    activeNavBarButton('#field_nav');
+})
+
+$('#add_Field').click(function (){
+    navigateToPage('#field_registerSection');
+    activeNavBarButton('#field_nav');
+})
+
+$('#monitering-log_nav').click(function (){
+    navigateToPage('#log_section');
+    activeNavBarButton('#monitering-log_nav');
+})
+
+$('#add_log').click(function (){
+    navigateToPage('#log_registerSection');
+    activeNavBarButton('#monitering-log_nav');
+})
 
 
 
