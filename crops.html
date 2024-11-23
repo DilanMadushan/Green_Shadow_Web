@@ -373,15 +373,15 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                <div id="equipment_section">
+                <div id="equipment_return_section">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card text-primary text-primary mb-5 d-flex flex-column" style="gap: 10px">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
                                 <div class="card-body">
                                     <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
                                         style="justify-content: space-between">
-                                        <li><span>DashBoard</span> / Equipment</li>
-                                        <li>Equipment Management</li>
+                                        <li><span>DashBoard</span> / <span>Equipment</span> / Return</li>
+                                        <li>Return</li>
                                     </ul>
                                 </div>
                             </div>
@@ -399,22 +399,11 @@
 
 
                         <div class="col-md-1">
-                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_equipment"><i
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_equipment_return"><i
                                     class="fa-solid fa-plus h1"></i>
                             </button>
                         </div>
 
-                        <div class="col-md-1">
-                            <button type="submit" class="btn btn-primary mr-2 p-4" id="borrow_equipemnt">
-                                <i class="fa-solid fa-arrow-right-from-bracket h1"></i>
-                            </button>
-                        </div>
-
-                        <div class="col-md-1">
-                            <button type="submit" class="btn btn-primary mr-2 p-4" id="return_equipment">
-                                <i class="fa-solid fa-arrow-right-to-bracket h1"></i>
-                            </button>
-                        </div>
 
                     </div>
 
@@ -440,10 +429,11 @@
                                 <table class="table table-bordered table-hover">
                                     <thead class="bg-primary text-light">
                                     <tr>
-                                        <th>Equipment Id</th>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>status</th>
+                                        <th>Reservation Id</th>
+                                        <th>Date</th>
+                                        <th>Staff</th>
+                                        <th>Field</th>
+                                        <th>Equipment</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -462,15 +452,10 @@
                                             </div>
                                         </td>
                                         <td>Spring</td>
+                                        <td>Spring</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" title="View">
                                                 <i class="fa fa-eye"></i>
-                                            </button>
-                                            <button class="btn btn-primary btn-sm" title="Update">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Delete">
-                                                <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -502,7 +487,7 @@
 
                 </div>
 
-                <div id="equipment_registerSection">
+                <div id="equipment_return_section_registration">
 
                     <div class="row">
                         <div class="col-md-12">
@@ -510,8 +495,8 @@
                                 <div class="card-body">
                                     <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
                                         style="justify-content: space-between">
-                                        <li><span>DashBoard</span> / Equipment</li>
-                                        <li>Equipment Management</li>
+                                        <li><span>DashBoard</span> / <span>Equipment</span> / Return</li>
+                                        <li>Return</li>
                                     </ul>
                                 </div>
                             </div>
@@ -521,7 +506,7 @@
                     <div class="card text-primary mb-5 shadow-sm">
                         <div class="card-body text-dark">
 
-                            <h2 class="card-tale mb-4 font-weight-bold">Equipment Form</h2>
+                            <h2 class="card-tale mb-4 font-weight-bold">Return Form</h2>
                             <p>Fill All the detais</p>
 
                             <hr class="bg-dark mb-5">
@@ -529,45 +514,51 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Equipment Id</label>
+                                        <label>Reservation Id</label>
                                         <input type="text" class="form-control" placeholder="EQ001">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" placeholder="Hammer">
+                                        <label>Date</label>
+                                        <input type="Date" class="form-control" placeholder="Hammer">
                                     </div>
                                 </div>
 
 
-
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Type</label>
+                                        <label>Staff</label>
                                         <select class="form-control form-control-lg">
-                                            <option value="">Type</option>
-                                            <option>MACHINE</option>
-                                            <option>TOOL</option>
-                                            <option>VEHICLE</option>
-                                            <option>OTHER</option>
+                                            <option value="">Staff</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Status</label>
+                                        <label>Field</label>
                                         <select class="form-control form-control-lg">
-                                            <option value="">Type</option>
-                                            <option>AVAILABLE</option>
-                                            <option>IN_USE</option>
-                                            <option>MAINTENANCE</option>
-                                            <option>RETIRED</option>
+                                            <option value="">Field</option>
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Equipment</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="">Equipment</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Resone</label>
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+
 
 
                                 <div class="col-md-12">
@@ -576,7 +567,6 @@
                                         </button>
                                         <button type="submit" class="btn btn-danger">Cancel
                                         </button>
-
                                     </div>
                                 </div>
 
