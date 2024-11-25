@@ -373,14 +373,14 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                <div id="equipment_return_section">
+                <div id="vehicle_return_section">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card text-primary text-primary mb-5 d-flex flex-column">
                                 <div class="card-body">
                                     <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
                                         style="justify-content: space-between">
-                                        <li><span>DashBoard</span> / <span>Equipment</span> / Return</li>
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Return</li>
                                         <li>Return</li>
                                     </ul>
                                 </div>
@@ -399,7 +399,7 @@
 
 
                         <div class="col-md-1">
-                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_equipment_return"><i
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_vehicle_return"><i
                                     class="fa-solid fa-plus h1"></i>
                             </button>
                         </div>
@@ -432,8 +432,8 @@
                                         <th>Reservation Id</th>
                                         <th>Date</th>
                                         <th>Staff</th>
-                                        <th>Field</th>
-                                        <th>Equipment</th>
+                                        <th>Vehicle</th>
+                                        <th>license_plate_number</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -487,7 +487,7 @@
 
                 </div>
 
-                <div id="equipment_return_section_registration">
+                <div id="vehicle_return_registration">
 
                     <div class="row">
                         <div class="col-md-12">
@@ -495,7 +495,7 @@
                                 <div class="card-body">
                                     <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
                                         style="justify-content: space-between">
-                                        <li><span>DashBoard</span> / <span>Equipment</span> / Return</li>
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Return</li>
                                         <li>Return</li>
                                     </ul>
                                 </div>
@@ -515,14 +515,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Reservation Id</label>
-                                        <input type="text" class="form-control" placeholder="EQ001">
+                                        <input type="text" class="form-control" placeholder="VR001">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date</label>
-                                        <input type="Date" class="form-control" placeholder="Hammer">
+                                        <input type="Date" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
@@ -538,25 +538,27 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Field</label>
+                                        <label>Vehicle</label>
                                         <select class="form-control form-control-lg">
-                                            <option value="">Field</option>
+                                            <option value="Vehicle">Vehicle</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Equipment</label>
-                                        <select class="form-control form-control-lg">
-                                            <option value="">Equipment</option>
-                                        </select>
+                                        <label>License Plate Number</label>
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Resone</label>
-                                    <textarea class="form-control" rows="4"></textarea>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Resone</label>
+                                        <textarea class="form-control" rows="4"></textarea>
+                                    </div>
                                 </div>
 
 

@@ -27,9 +27,9 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2"
+            <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo_1.png" class="mr-2"
                                                                            alt="logo"/></a>
-            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/mini-Logo.png" alt="logo"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
             <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -370,7 +370,7 @@
         <div class="main-panel">
             <div class="content-wrapper">
 
-                <div id="dash_board" style="display: none">
+                <div id="dash_board">
                     <div class="row">
                         <div class="col-md-12 grid-margin">
                             <div class="row">
@@ -2724,6 +2724,637 @@
 
                 </div>
 
+                <div id="vehicle_section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / Vehicle</li>
+                                        <li>Vehicle Management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="card text-primary mb-5 shadow-sm">
+                                <div class="card-body text-dark">
+                                    <h3>00</h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_vehicle"><i
+                                    class="fa-solid fa-plus h1"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="borrow_vehicle">
+                                <i class="fa-solid fa-arrow-right-from-bracket h1"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="return_vehicle">
+                                <i class="fa-solid fa-arrow-right-to-bracket h1"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="table-responsive mb-5">
+                                <!-- Search bar -->
+                                <div class="d-flex justify-content-end mb-3">
+                                    <div class="form-group col-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Table -->
+                                <table class="table table-bordered table-hover">
+                                    <thead class="bg-primary text-light">
+                                    <tr>
+                                        <th>Vehicle Code</th>
+                                        <th>License Plate Number</th>
+                                        <th>Category</th>
+                                        <th>Fuel Type</th>
+                                        <th>Status</th>
+                                        <th>remarks</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="../../images/faces/face1.jpg" alt="Crop Image"
+                                                 class="img-thumbnail" style="width: 50px; height: 50px;">
+                                        </td>
+                                        <td>Herman Beck</td>
+                                        <td>
+                                            <div class="progress" style="height: 10px;">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                     style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td>Spring</td>
+                                        <td>Spring</td>
+                                        <td>Spring</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" title="Update">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Repeat rows as needed -->
+                                    </tbody>
+                                </table>
+
+                                <!-- Pagination -->
+                                <div aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end mt-3">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="vehicle_registration">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / Vehicle</li>
+                                        <li>Vehicle Management</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-primary mb-5 shadow-sm">
+                        <div class="card-body text-dark">
+
+                            <h2 class="card-tale mb-4 font-weight-bold">Vehicle Form</h2>
+                            <p>Fill All the detais</p>
+
+                            <hr class="bg-dark mb-5">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Vehicle Code</label>
+                                        <input type="text" class="form-control" placeholder="V001">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>License Plate Number</label>
+                                        <input type="text" class="form-control" placeholder="ABC 5024">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Fuel Type</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="">Fuel Type</option>
+                                            <option value="Petrol">Petrol</option>
+                                            <option value="Diesel">Diesel</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="">Status</option>
+                                            <option value="AVAILABLE">AVAILABLE</option>
+                                            <option value="UNAVAILABLE">UNAVAILABLE</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Remarks</label>
+                                        <input type="text" class="form-control" placeholder="No issues">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mr-2">Add
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="vehicle_resevation_section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Reservation</li>
+                                        <li>Reservation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="card text-primary mb-5 shadow-sm">
+                                <div class="card-body text-dark">
+                                    <h3>00</h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_vehicle_resevetion"><i
+                                    class="fa-solid fa-plus h1"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="table-responsive mb-5">
+                                <!-- Search bar -->
+                                <div class="d-flex justify-content-end mb-3">
+                                    <div class="form-group col-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Table -->
+                                <table class="table table-bordered table-hover">
+                                    <thead class="bg-primary text-light">
+                                    <tr>
+                                        <th>Reservation Id</th>
+                                        <th>Date</th>
+                                        <th>Staff</th>
+                                        <th>Vehicle</th>
+                                        <th>License Plate Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="../../images/faces/face1.jpg" alt="Crop Image"
+                                                 class="img-thumbnail" style="width: 50px; height: 50px;">
+                                        </td>
+                                        <td>Herman Beck</td>
+                                        <td>
+                                            <div class="progress" style="height: 10px;">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                     style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td>Spring</td>
+                                        <td>Spring</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Repeat rows as needed -->
+                                    </tbody>
+                                </table>
+
+                                <!-- Pagination -->
+                                <div aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end mt-3">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="vehicle_resevation_registration">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Reservation</li>
+                                        <li>Reservation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-primary mb-5 shadow-sm">
+                        <div class="card-body text-dark">
+
+                            <h2 class="card-tale mb-4 font-weight-bold">Reservation Form</h2>
+                            <p>Fill All the detais</p>
+
+                            <hr class="bg-dark mb-5">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Reservation Id</label>
+                                        <input type="text" class="form-control" placeholder="VR001">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input type="Date" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Staff</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="">Staff</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Vehicle</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="Vehicle">Vehicle</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>License Plate Number</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Resone</label>
+                                        <textarea class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mr-2">Add
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="vehicle_return_section">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Return</li>
+                                        <li>Return</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="card text-primary mb-5 shadow-sm">
+                                <div class="card-body text-dark">
+                                    <h3>00</h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary mr-2 p-4" id="add_vehicle_return"><i
+                                    class="fa-solid fa-plus h1"></i>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="table-responsive mb-5">
+                                <!-- Search bar -->
+                                <div class="d-flex justify-content-end mb-3">
+                                    <div class="form-group col-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control"
+                                                   placeholder="Search">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Table -->
+                                <table class="table table-bordered table-hover">
+                                    <thead class="bg-primary text-light">
+                                    <tr>
+                                        <th>Reservation Id</th>
+                                        <th>Date</th>
+                                        <th>Staff</th>
+                                        <th>Vehicle</th>
+                                        <th>license_plate_number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td class="py-1">
+                                            <img src="../../images/faces/face1.jpg" alt="Crop Image"
+                                                 class="img-thumbnail" style="width: 50px; height: 50px;">
+                                        </td>
+                                        <td>Herman Beck</td>
+                                        <td>
+                                            <div class="progress" style="height: 10px;">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                     style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td>Spring</td>
+                                        <td>Spring</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <!-- Repeat rows as needed -->
+                                    </tbody>
+                                </table>
+
+                                <!-- Pagination -->
+                                <div aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end mt-3">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="vehicle_return_registration">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-primary text-primary mb-5 d-flex flex-column">
+                                <div class="card-body">
+                                    <ul class="text-decoration-none d-flex list-unstyled h3 px-3"
+                                        style="justify-content: space-between">
+                                        <li><span>DashBoard</span> / <span>Vehicle</span> / Return</li>
+                                        <li>Return</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card text-primary mb-5 shadow-sm">
+                        <div class="card-body text-dark">
+
+                            <h2 class="card-tale mb-4 font-weight-bold">Return Form</h2>
+                            <p>Fill All the detais</p>
+
+                            <hr class="bg-dark mb-5">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Return Id</label>
+                                        <input type="text" class="form-control" placeholder="VR001">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input type="Date" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Staff</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="">Staff</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Vehicle</label>
+                                        <select class="form-control form-control-lg">
+                                            <option value="Vehicle">Vehicle</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>License Plate Number</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Resone</label>
+                                        <textarea class="form-control" rows="4"></textarea>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-primary mr-2">Add
+                                        </button>
+                                        <button type="submit" class="btn btn-danger">Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
         <!-- main-panel ends -->
@@ -2737,9 +3368,9 @@
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="vendors/chart.js/Chart.min.js"></script>
-<script src="vendors/datatables.net/jquery.dataTables.js"></script>
+<!--<script src="vendors/datatables.net/jquery.dataTables.js"></script>-->
 <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<!--  <script src="js/dataTables.select.min.js"></script>-->
+  <script src="js/dataTables.select.min.js"></script>
 <script src="jquery-3.7.1.min.js"></script>
 
 <!-- End plugin js for this page -->

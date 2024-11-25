@@ -1,3 +1,11 @@
+const token = getToken("token");
+console.log(token)
+
+if(!token || token == null || token == ""){
+    console.log("if true")
+    document.location.href = "../../login.html";
+}
+
 navigateToPage('#dash_board')
 activeNavBarButton('#dashboard_nav');
 
@@ -18,11 +26,20 @@ function navigateToPage(page) {
     $('#equipment_reservation_registration').css('display', 'none');
     $('#equipment_return_section').css('display', 'none');
     $('#equipment_return_section_registration').css('display', 'none');
+    $('#vehicle_section').css('display', 'none');
+    $('#vehicle_registration').css('display', 'none');
+    $('#vehicle_resevation_section').css('display', 'none');
+    $('#vehicle_resevation_registration').css('display', 'none');
+    $('#vehicle_return_section').css('display', 'none');
+    $('#vehicle_return_registration').css('display', 'none');
 
     $(page).css('display', 'block');
 }
 
 function callPageFunction(page) {
+    if(page =="#dash_board"){
+
+    }
 
 }
 
@@ -114,7 +131,40 @@ $('#add_equipment_return').click(function (){
     activeNavBarButton('#equipment_nav');
 })
 
+$('#vehicle_nav').click(function (){
+    navigateToPage('#vehicle_section');
+    activeNavBarButton('#vehicle_nav');
+})
 
+$('#add_vehicle').click(function (){
+    navigateToPage('#vehicle_registration');
+    activeNavBarButton('#vehicle_nav');
+})
+
+$('#borrow_vehicle').click(function (){
+    navigateToPage('#vehicle_resevation_section');
+    activeNavBarButton('#vehicle_nav');
+})
+
+$('#add_vehicle_resevetion').click(function (){
+    navigateToPage('#vehicle_resevation_registration');
+    activeNavBarButton('#vehicle_nav');
+})
+
+$('#return_vehicle').click(function (){
+    navigateToPage('#vehicle_return_section');
+    activeNavBarButton('#vehicle_nav');
+})
+
+$('#add_vehicle_return').click(function (){
+    navigateToPage('#vehicle_return_registration');
+    activeNavBarButton('#vehicle_nav');
+})
+
+
+function getToken(token){
+    return document.cookie.split(token+"=").pop(0);
+}
 
 
 
