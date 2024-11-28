@@ -159,3 +159,12 @@ $('#cancel_crop').on('click', function(){
     activeNavBarButton('#crop_nav');
 })
 
+
+$('#save_crop').on('click' ,function(){
+    cropStateChange("Save")
+})
+
+// ---------------------------- Save Crop -------------------- 
+
+
+
