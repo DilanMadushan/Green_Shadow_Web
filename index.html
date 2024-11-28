@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title>Green Shadow</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="vendors/feather/feather.css">
     <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -1165,7 +1165,7 @@
                         <div class="col-md-2">
                             <div class="card text-primary mb-5 shadow-sm">
                                 <div class="card-body text-dark">
-                                    <h3>00</h3>
+                                    <h3 id="crop_count">00</h3>
                                 </div>
                             </div>
                         </div>
@@ -1197,7 +1197,7 @@
                                 </div>
 
                                 <!-- Table -->
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-bordered table-hover" id="crop_table">
                                     <thead class="bg-primary text-light">
                                     <tr>
                                         <th>Crop Code</th>
@@ -1209,7 +1209,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="py-1">
                                             <img src="../../images/faces/face1.jpg" alt="Crop Image"
                                                  class="img-thumbnail" style="width: 50px; height: 50px;">
@@ -1225,7 +1225,7 @@
                                         <td>Spring</td>
                                         <td>North Field</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm" title="View">
+                                            <button class="btn btn-primary btn-sm" title="View" id="crop_view">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                             <button class="btn btn-primary btn-sm" title="Update">
@@ -1235,7 +1235,7 @@
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <!-- Repeat rows as needed -->
                                     </tbody>
                                 </table>
@@ -1291,16 +1291,17 @@
 
                                 <div class="col-md-12 d-flex justify-content-center">
                                     <div>
-                                        <img src="images/img.png" alt="img" id="cropIgePrevew" style="width: 380px">
+                                        <img src="images/img.png" alt="img" id="cropImg_previw" style="width: 380px">
                                         <div class="form-group">
-                                            <label></label>
-                                            <input type="file" name="img[]" class="file-upload-default">
-                                            <div class="input-group col-xs-12" id="cropFilePicker">
+                                            <label>Crop Image</label>
+                                            <input type="file" name="img[]" class="file-upload-default"
+                                                   id="cropImg_button">
+                                            <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled=""
-                                                       placeholder="Upload Image">
+                                                       placeholder="Upload Image" id="crop_input">
                                                 <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button"
-                                  id="fileUplod">Upload</button>
+                                  id="crop_upload">Upload</button>
                         </span>
                                             </div>
                                         </div>
@@ -1310,35 +1311,35 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Crop Code</label>
-                                        <input type="text" class="form-control" placeholder="CR001">
+                                        <input type="text" class="form-control" placeholder="CR001" id="crop_id">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" placeholder="White Rice">
+                                        <input type="text" class="form-control" placeholder="White Rice" id="crop_commen_name">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Scientific Name</label>
-                                        <input type="text" class="form-control" placeholder="Triticum aestivum">
+                                        <input type="text" class="form-control" placeholder="Triticum aestivum" id="crop_Scientific_name">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Season</label>
-                                        <input type="text" class="form-control" placeholder="Summer">
+                                        <input type="text" class="form-control" placeholder="Summer" id="crop_Season">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Category</label>
-                                        <select class="form-control form-control-lg" id="exampleFormControlSelect1">
+                                        <label>Category</label>
+                                        <select class="form-control form-control-lg" id="crop_catagary">
                                             <option value="">Category</option>
                                             <option>RICE</option>
                                         </select>
@@ -1348,9 +1349,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="exampleFormControlSelect1">Field</label>
-                                        <select class="form-control form-control-lg">
-                                            <option value="">Field</option>
-                                            <option>F001</option>
+                                        <select class="form-control form-control-lg" id="crop_field_ids">
+                                            <!-- <option value="">Field</option>
+                                            <option>F001</option> -->
                                         </select>
                                     </div>
                                 </div>
@@ -1358,9 +1359,9 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-2">Add
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">Cancel
+                                        <button type="submit" class="btn btn-primary mr-2" id="save_crop">Add</button>
+                                        <button type="submit" class="btn btn-primary mr-2" id="update_crop">Update</button>
+                                        <button type="submit" class="btn btn-danger" id="cancel_crop">Cancel
                                         </button>
 
                                     </div>
@@ -3362,7 +3363,9 @@
     <!-- page-body-wrapper ends -->
 </div>
 <!-- container-scroller -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- plugins:js -->
 <script src="vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
@@ -3385,9 +3388,11 @@
 <script src="js/dashboard.js"></script>
 <script src="js/Chart.roundedBarCharts.js"></script>
 <script src="custom/js/fileAppender/fileApennder.js"></script>
+
+<!-- End custom js for this page-->
 <script src="custom/main/spa.js"></script>
 <script src="custom/js/fileAppender/fileApennder.js"></script>
-<!-- End custom js for this page-->
+<script src="custom/controller/cropController.js"></script>
 </body>
 
 </html>

@@ -1,15 +1,13 @@
-baseUrl = 'http://localhost:8080/GreenShadow/api/v1/';
-
 $("#login_button").on('click' , function (){
     var email = $('#login_email').val();
     var password = $('#login_password').val();
-    
+
     const formData ={
         email:email,
         password:password
     }
 
-    url = baseUrl+"auth/signIn";
+    var url = "http://localhost:8080/GreenShadow/api/v1/auth/signIn";
 
     if(validate(email,password)){
         $.ajax({

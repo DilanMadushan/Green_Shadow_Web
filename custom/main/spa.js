@@ -1,3 +1,5 @@
+const baseUrl = 'http://localhost:8080/GreenShadow/api/v1/';
+
 const token = getToken("token");
 console.log(token)
 
@@ -37,8 +39,12 @@ function navigateToPage(page) {
 }
 
 function callPageFunction(page) {
-    if(page =="#dash_board"){
 
+    if(page =="#crop_section"){
+        genarateCropId();
+        loadCropTable();
+        setFieldAllIds();
+        cropStateChange("Save");    
     }
 
 }
@@ -163,7 +169,7 @@ $('#add_vehicle_return').click(function (){
 
 
 function getToken(token){
-    return document.cookie.split(token+"=").pop(0);
+    return document.cookie.split(token+"=").pop(0).trim();
 }
 
 
