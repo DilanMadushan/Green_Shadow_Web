@@ -54,7 +54,7 @@ function loadCropTable(){
                                             <button class="btn btn-primary btn-sm" title="View" id="crop_view">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <button class="btn btn-primary btn-sm" title="Update">
+                                            <button class="btn btn-primary btn-sm" title="Update" id="crop_update">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button class="btn btn-danger btn-sm" title="Delete">
@@ -134,18 +134,33 @@ function cropStateChange(state){
         $('#crop_upload').attr('disabled', false);
         $('#crop_input').attr('disabled', false);
 
-        $('#crop_id').attr('disabled', false);
+        $('#crop_id').attr('readonly', true);
         $('#crop_commen_name').attr('disabled', false);
         $('#crop_Scientific_name').attr('disabled', false);
         $('#crop_Season').attr('disabled', false);
         $('#crop_catagary').attr('disabled', false);
         $('#crop_field_ids').attr('disabled', false);
     }
+
+    if(state == "Update"){
+
+        $('#save_crop').hide();
+        $('#update_crop').show();
+        $('#crop_upload').attr('disabled', false);
+        $('#crop_input').attr('disabled', false);
+
+        $('#crop_id').attr('readonly', true);
+        $('#crop_commen_name').attr('disabled', false);
+        $('#crop_Scientific_name').attr('disabled', false);
+        $('#crop_Season').attr('disabled', false);
+        $('#crop_catagary').attr('disabled', false);
+        $('#crop_field_ids').attr('disabled', false);
+    }
+
 }
 
 
 $('#crop_table').on('click', '#crop_view' ,function(){
-    console.log("Update");
     
     cropStateChange("View")
     navigateToPage('#crop_registerSection');
@@ -251,3 +266,40 @@ function validateCrop(crop){
 
 
 }
+
+
+$('#crop_table').on('click', '#crop_update' ,function(){
+    
+    
+    let cropId = $(this).closest('tr').find('td').first().text();
+
+    console.log(cropId);
+
+    $.ajax({
+        method:"GET",
+        url: baseUrl+`crop/${cropId}`,
+        // url: baseUrl+`crop/CR001`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(crop){
+
+            $('#crop_id').val(crop.crop_code);
+            $('#crop_commen_name').val(crop.common_name);
+            $('#crop_Scientific_name').val(crop.scientific_name)
+            $('#cropImg_previw').attr("src", crop.crop_image);
+            $('#crop_catagary').val(crop.category);
+            $('#crop_Season').val(crop.crop_season);
+            $('#crop_field_ids').val(crop.field_code);
+
+            cropStateChange("Update")
+            navigateToPage('#crop_registerSection');
+            activeNavBarButton('#crop_nav');
+
+        },error:function(crop){
+            console.log(crop);
+        }
+        
+    })
+
+})
