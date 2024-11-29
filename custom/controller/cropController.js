@@ -215,7 +215,7 @@ $('#save_crop').on('click' ,function(){
             Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Action Added successfully",
+                title: "Save Crop successfully",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -300,6 +300,51 @@ $('#crop_table').on('click', '#crop_update' ,function(){
             console.log(crop);
         }
         
+    })
+
+})
+
+$('#update_crop').on('click', ()=>{
+
+    var cropData = {
+        crop_code : $('#crop_id').val(),
+        common_name :  $('#crop_commen_name').val(),
+        scientific_name : $('#crop_Scientific_name').val(),
+        crop_image : $('#cropbase64_input').val(),
+        category : $('#crop_catagary').val(),
+        crop_season : $('#crop_Season').val(),
+        field_code :  $('#crop_field_ids').val()
+        
+    }
+
+    if(!validateCrop(cropData)){
+        return
+    }
+
+    $.ajax({
+        method:"PATCH",
+        url: baseUrl+`crop`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        processData: false,
+        data:JSON.stringify(cropData),
+        contentType:"application.json",
+        success:function(resualt){
+            loadCropTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Crop successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(resualt){
+            console.log(resualt);
+        }
+
     })
 
 })
