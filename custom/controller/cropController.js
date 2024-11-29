@@ -11,12 +11,12 @@ function genarateCropId(){
                 var num = parseInt(parts[1]);
                 var genNum = (num+1).toString();
                 if (genNum.length == 1){
-                    $("#crop_id").val("CR_00"+genNum);
+                    $("#crop_id").val("CR00"+genNum);
                 }else if(genNum.length == 2){
-                    $("#crop_id").val("CR_0"+genNum);
+                    $("#crop_id").val("CR0"+genNum);
                 }
                  else{
-                    $("#crop_id").val("CR_"+genNum);
+                    $("#crop_id").val("CR"+genNum);
                 }
 
         },error:function(id){
@@ -164,12 +164,11 @@ $('#add_crop').on('click' ,function(){
     cropStateChange("Save")
 })
 
-// ---------------------------- Save Crop -------------------- 
+
+
+// ---------------------------- Save Crop ---------------------------- 
 
 $('#save_crop').on('click' ,function(){
-
-    log(base64String)
-
     var cropData = {
         crop_code : $('#crop_id').val(),
         common_name :  $('#crop_commen_name').val(),
@@ -181,8 +180,74 @@ $('#save_crop').on('click' ,function(){
         
     }
 
-    
+    if(!validateCrop(cropData)){
+        return
+    }
+
+    $.ajax({
+        method:"POST",
+        url: baseUrl+`crop`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        processData: false,
+        data:JSON.stringify(cropData),
+        contentType:"application.json",
+        success:function(resualt){
+            genarateCropId();
+            loadCropTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Action Added successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(resualt){
+            console.log(resualt);
+        }
+
+    })
+
           
 
 })
 
+
+function validateCrop(crop){
+
+    console.log(crop);
+    
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    const requiredFields = [
+        {field: crop.crop_code, message: "Crop Code ID is required"},
+        {field: crop.common_name, message: "Common Name ID is required"},
+        {field: crop.scientific_name, message: "Scientific Name ID is required"},
+        {field: crop.crop_image, message: "Image is required"},
+        {field: crop.category, message: "Category is required"},
+        {field: crop.crop_season, message: "Crop Season is required"},
+        {field: crop.field_code, message: "Field Code is required"},
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+
+
+}
