@@ -160,11 +160,29 @@ $('#cancel_crop').on('click', function(){
 })
 
 
-$('#save_crop').on('click' ,function(){
+$('#add_crop').on('click' ,function(){
     cropStateChange("Save")
 })
 
 // ---------------------------- Save Crop -------------------- 
 
+$('#save_crop').on('click' ,function(){
 
+    log(base64String)
+
+    var cropData = {
+        crop_code : $('#crop_id').val(),
+        common_name :  $('#crop_commen_name').val(),
+        scientific_name : $('#crop_Scientific_name').val(),
+        crop_image : $('#cropbase64_input').val(),
+        category : $('#crop_catagary').val(),
+        crop_season : $('#crop_Season').val(),
+        field_code :  $('#crop_field_ids').val()
+        
+    }
+
+    
+          
+
+})
 
