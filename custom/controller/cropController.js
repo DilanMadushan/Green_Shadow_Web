@@ -160,15 +160,6 @@ function cropStateChange(state){
 }
 
 
-$('#crop_table').on('click', '#crop_view' ,function(){
-    
-    cropStateChange("View")
-    navigateToPage('#crop_registerSection');
-    activeNavBarButton('#crop_nav');
-})
-
-
-
 $('#cancel_crop').on('click', function(){
     navigateToPage('#crop_section');
     activeNavBarButton('#crop_nav');
@@ -398,4 +389,38 @@ $('#crop_table').on('click', '#crop_delete' ,function(){
     });
 
 
+})
+
+// ---------------------------- View Crop ----------------------------
+
+$('#crop_table').on('click', '#crop_view' ,function(){
+
+    let cropId = $(this).closest('tr').find('td').first().text();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`crop/${cropId}`,
+        headers:{
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(crop){
+
+            $('#crop_id').val(crop.crop_code);
+            $('#crop_commen_name').val(crop.common_name);
+            $('#crop_Scientific_name').val(crop.scientific_name)
+            $('#cropImg_previw').attr("src", crop.crop_image);
+            $('#crop_catagary').val(crop.category);
+            $('#crop_Season').val(crop.crop_season);
+            $('#crop_field_ids').val(crop.field_code);
+
+            cropStateChange("View")
+            navigateToPage('#crop_registerSection');
+            activeNavBarButton('#crop_nav');
+
+        },error:function(crop){
+            console.log(crop);
+        }
+    })
+    
 })
