@@ -203,6 +203,7 @@ $('#save_crop').on('click' ,function(){
         success:function(resualt){
             genarateCropId();
             loadCropTable();
+            clearCropFields()
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -325,6 +326,7 @@ $('#update_crop').on('click', ()=>{
         data:JSON.stringify(cropData),
         contentType:"application.json",
         success:function(resualt){
+            clearCropFields();
             loadCropTable();
             Swal.fire({
                 position: "center",
@@ -424,3 +426,15 @@ $('#crop_table').on('click', '#crop_view' ,function(){
     })
     
 })
+
+
+function clearCropFields(){
+    genarateCropId()
+    $('#crop_commen_name').val("");
+    $('#crop_Scientific_name').val("")
+    $('#cropImg_previw').attr("src", "images/img.png");
+    $('#crop_input').val("");
+    $('#crop_catagary').val('Category').change();
+    $('#crop_Season').val("");
+    $('#crop_field_ids').val('Field').change();
+}
