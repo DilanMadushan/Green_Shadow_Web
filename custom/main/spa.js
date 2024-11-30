@@ -47,6 +47,11 @@ function callPageFunction(page) {
         cropStateChange("Save");    
     }
 
+    if(page == "#field_section"){
+        genarateNextFieldId();
+
+    }
+
 }
 
 
