@@ -57,7 +57,7 @@ function loadCropTable(){
                                             <button class="btn btn-primary btn-sm" title="Update" id="crop_update">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm" title="Delete">
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="crop_delete">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
@@ -268,6 +268,8 @@ function validateCrop(crop){
 }
 
 
+// ---------------------------- update Crop ----------------------------
+
 $('#crop_table').on('click', '#crop_update' ,function(){
     
     
@@ -346,5 +348,54 @@ $('#update_crop').on('click', ()=>{
         }
 
     })
+
+})
+
+
+// ---------------------------- Delete Crop ----------------------------
+
+$('#crop_table').on('click', '#crop_delete' ,function(){
+    
+    
+    let cropId = $(this).closest('tr').find('td').first().text();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+
+    }).then((result) =>{
+        if(result.isConfirmed){
+
+            $.ajax({
+                method:"DELETE",
+                url: baseUrl+`crop/${cropId}`,
+            
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },success:function(crop){
+                    loadCropTable();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Delete Crop successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+        
+                },error:function(crop){
+                    console.log(crop);
+                }
+                
+            })
+
+        }
+    });
+
 
 })
