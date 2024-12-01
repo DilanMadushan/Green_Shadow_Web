@@ -91,6 +91,7 @@ $('#field_nav').click(function (){
 $('#add_Field').click(function (){
     navigateToPage('#field_registerSection');
     activeNavBarButton('#field_nav');
+    chageFieldState("Save");
 })
 
 $('#monitering-log_nav').click(function (){

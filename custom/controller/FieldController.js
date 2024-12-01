@@ -91,6 +91,50 @@ function chageFieldState(state){
 }
 
 
-$('#add_Field').on('click' ,()=>{
-    chageFieldState("Save");
+$('#save_field').on('click' ,()=>{
+    var fieldDate = {
+        field_code: $('#field_code').val(),
+        field_Name: $('#field_name').val(),
+        field_location:$('#field_location').val(),
+        extent_size_of_field: $('#field_size').val(),
+        field_image_1: $('#field1_base64_input').val(),
+        field_image_2: $('#field2_base64_input').val()
+      }
+
+      if(!validateField(fieldDate)){
+        return
+      }
+      
 })
+
+
+function validateField(fieldData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    const requiredFields = [
+        {field: fieldData.field_image_1, message: "Field Image is required"},
+        {field: fieldData.field_image_2, message: "Field Image ID is required"},
+        {field: fieldData.crop_code, message: "Field Code ID is required"},
+        {field: fieldData.field_Name, message: "Field Name ID is required"},
+        {field: fieldData.field_location, message: "Location is required"},
+        {field: fieldData.extent_size_of_field, message: "Size is required"},
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}

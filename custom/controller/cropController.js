@@ -239,9 +239,9 @@ function validateCrop(crop){
     };
 
     const requiredFields = [
-        {field: crop.crop_code, message: "Crop Code ID is required"},
-        {field: crop.common_name, message: "Common Name ID is required"},
-        {field: crop.scientific_name, message: "Scientific Name ID is required"},
+        {field: crop.crop_code, message: "Crop Code is required"},
+        {field: crop.common_name, message: "Common Name is required"},
+        {field: crop.scientific_name, message: "Scientific Name is required"},
         {field: crop.crop_image, message: "Image is required"},
         {field: crop.category, message: "Category is required"},
         {field: crop.crop_season, message: "Crop Season is required"},
