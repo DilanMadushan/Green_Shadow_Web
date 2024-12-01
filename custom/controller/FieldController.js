@@ -101,9 +101,39 @@ $('#save_field').on('click' ,()=>{
         field_image_2: $('#field2_base64_input').val()
       }
 
+      console.log(fieldDate);
+
       if(!validateField(fieldDate)){
         return
       }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`field`,
+        processData: false,
+        data:JSON.stringify(fieldDate),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextFieldId();
+            loadFieldTable()
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Save Field successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
       
 })
 
