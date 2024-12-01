@@ -49,7 +49,7 @@ function loadFieldTable(){
                                             <button class="btn btn-primary btn-sm" title="View" id="view_Field">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <button class="btn btn-primary btn-sm" title="Update">
+                                            <button class="btn btn-primary btn-sm" title="Update" id="field_update">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button class="btn btn-danger btn-sm" title="Delete">
@@ -110,6 +110,22 @@ function chageFieldState(state){
         $('#field_name').attr('disabled',true);
         $('#field_location').attr('disabled',true);
         $('#field_size').attr('disabled',true);
+
+    }
+
+    if(state == "Update"){
+
+        $('#save_field').hide();
+        $('#update_field').show();
+        
+        $('#field1_upload').attr('disabled',false);
+        $('#field1_input').attr('disabled',false);
+        $('#field2_upload').attr('disabled',false);
+        $('#field2_input').attr('disabled',false);
+        $('#field_code').attr('disabled',true);
+        $('#field_name').attr('disabled',false);
+        $('#field_location').attr('disabled',false);
+        $('#field_size').attr('disabled',false);
 
     }
 }
@@ -236,5 +252,90 @@ $('#field_table').on('click' ,'#view_Field' ,function(){
             console.log(field);
         }
     })
+
+})
+
+
+
+// ---------------------------------- Update Crop ---------------------------------------------
+
+$('#field_table').on('click' ,'#field_update' ,function(){
+
+    var fieldId = $(this).closest('tr').find('td').first().text();
+    console.log(fieldId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field/${fieldId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(field){
+
+            $('#field_code').val(field.field_code);
+            $('#field_name').val(field.field_Name);
+            $('#field_location').val(field.field_location);
+            $('#field_size').val(field.extent_size_of_field);
+            $('#field1_base64_input').val(field.field_image_1);
+            $('#field2_base64_input').val(field.field_image_2);
+            $("#fieldImg1_previw").attr("src", field.field_image_1);
+            $("#fieldImg2_previw").attr("src", field.field_image_2);
+
+            navigateToPage('#field_registerSection');
+            activeNavBarButton('#field_nav');
+            chageFieldState("Update");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
+
+$('#update_field').on('click' ,()=>{
+
+    var fieldDate = {
+        field_code: $('#field_code').val(),
+        field_Name: $('#field_name').val(),
+        field_location:$('#field_location').val(),
+        extent_size_of_field: $('#field_size').val(),
+        field_image_1: $('#field1_base64_input').val(),
+        field_image_2: $('#field2_base64_input').val()
+      }
+
+      console.log(fieldDate);
+
+      if(!validateField(fieldDate)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"PATCH",
+        url:baseUrl+`field`,
+        processData: false,
+        data:JSON.stringify(fieldDate),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            loadFieldTable()
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Field successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
 
 })
