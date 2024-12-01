@@ -74,3 +74,23 @@ function setFieldCount(){
         $('#field_count').text(count)
     }
 }
+
+function chageFieldState(state){
+
+    if(state == "Save"){
+        $('#field1_upload').attr('disabled',false);
+        $('#field1_input').attr('disabled',false);
+        $('#field2_upload').attr('disabled',false);
+        $('#field2_input').attr('disabled',false);
+        $('#field_code').attr('disabled',true);
+        $('#field_name').attr('disabled',false);
+        $('#field_location').attr('disabled',false);
+        $('#field_size').attr('disabled',false);
+
+    }
+}
+
+
+$('#add_Field').on('click' ,()=>{
+    chageFieldState("Save");
+})
