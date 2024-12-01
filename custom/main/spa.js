@@ -49,6 +49,7 @@ function callPageFunction(page) {
 
     if(page == "#field_section"){
         genarateNextFieldId();
+        loadFieldTable();
 
     }
 
