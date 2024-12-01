@@ -46,7 +46,7 @@ function loadFieldTable(){
                                         <td>${crop.field_location}</td>
                                         <td>${crop.extent_size_of_field}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm" title="View">
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_Field">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                             <button class="btn btn-primary btn-sm" title="Update">
@@ -82,6 +82,10 @@ function chageFieldState(state){
 
     if(state == "Save"){
 
+        $('#save_field').show();
+        $('#update_field').hide();
+
+
         $('#field1_upload').attr('disabled',false);
         $('#field1_input').attr('disabled',false);
         $('#field2_upload').attr('disabled',false);
@@ -94,6 +98,9 @@ function chageFieldState(state){
     }
 
     if(state == "View"){
+
+        $('#save_field').hide();
+        $('#update_field').hide();
         
         $('#field1_upload').attr('disabled',true);
         $('#field1_input').attr('disabled',true);
@@ -112,6 +119,8 @@ $('#cancel_field').on('click' ,()=>{
     activeNavBarButton('#field_nav');
 })
 
+
+// ---------------------------------- Save Crop ---------------------------------------------
 
 $('#save_field').on('click' ,()=>{
     var fieldDate = {
@@ -190,3 +199,42 @@ function validateField(fieldData){
     }
     return true;
 }
+
+
+// ---------------------------------- View Crop ---------------------------------------------
+
+
+$('#field_table').on('click' ,'#view_Field' ,function(){
+
+    var fieldId = $(this).closest('tr').find('td').first().text();
+    console.log(fieldId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field/${fieldId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(field){
+
+            $('#field_code').val(field.field_code);
+            $('#field_name').val(field.field_Name);
+            $('#field_location').val(field.field_location);
+            $('#field_size').val(field.extent_size_of_field);
+            $('#field1_base64_input').val(field.field_image_1);
+            $('#field2_base64_input').val(field.field_image_2);
+            $("#fieldImg1_previw").attr("src", field.field_image_1);
+            $("#fieldImg2_previw").attr("src", field.field_image_2);
+
+            navigateToPage('#field_registerSection');
+            activeNavBarButton('#field_nav');
+            chageFieldState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
