@@ -52,7 +52,7 @@ function loadFieldTable(){
                                             <button class="btn btn-primary btn-sm" title="Update" id="field_update">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm" title="Delete">
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="field_delete">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
@@ -339,3 +339,47 @@ $('#update_field').on('click' ,()=>{
       })
 
 })
+
+
+$('#field_table').on('click' ,'#field_delete' ,function(){
+
+    var fieldId = $(this).closest('tr').find('td').first().text();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+
+    }).then((result) =>{
+        if(result.isConfirmed){
+
+            $.ajax({
+                method:"DELETE",
+                url: baseUrl+`field/${fieldId}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },success:function(crop){
+                    loadCropTable();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Delete Field successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+        
+                },error:function(crop){
+                    console.log(crop);
+                }
+                
+            })
+
+        }
+    });
+
+});
