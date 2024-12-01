@@ -26,6 +26,9 @@ function genarateNextFieldId(){
 }
 
 function loadFieldTable(){
+
+    $('#field_table tbody').empty();
+
     $.ajax({
         method:"GET",
         url:baseUrl+`field`,
@@ -78,6 +81,7 @@ function setFieldCount(){
 function chageFieldState(state){
 
     if(state == "Save"){
+
         $('#field1_upload').attr('disabled',false);
         $('#field1_input').attr('disabled',false);
         $('#field2_upload').attr('disabled',false);
@@ -88,7 +92,25 @@ function chageFieldState(state){
         $('#field_size').attr('disabled',false);
 
     }
+
+    if(state == "View"){
+        
+        $('#field1_upload').attr('disabled',true);
+        $('#field1_input').attr('disabled',true);
+        $('#field2_upload').attr('disabled',true);
+        $('#field2_input').attr('disabled',true);
+        $('#field_code').attr('disabled',true);
+        $('#field_name').attr('disabled',true);
+        $('#field_location').attr('disabled',true);
+        $('#field_size').attr('disabled',true);
+
+    }
 }
+
+$('#cancel_field').on('click' ,()=>{
+    navigateToPage('#field_section');
+    activeNavBarButton('#field_nav');
+})
 
 
 $('#save_field').on('click' ,()=>{
