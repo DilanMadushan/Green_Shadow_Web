@@ -53,6 +53,10 @@ function callPageFunction(page) {
 
     }
 
+    if(page == "#log_section"){
+        genarateNextLogId();
+    }
+
 }
 
 

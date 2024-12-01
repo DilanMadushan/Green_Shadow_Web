@@ -167,7 +167,8 @@ $('#save_field').on('click' ,()=>{
         },
         success:function(resualt){
             genarateNextFieldId();
-            loadFieldTable()
+            loadFieldTable();
+            clearFieldFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -323,7 +324,8 @@ $('#update_field').on('click' ,()=>{
             'Content-Type': 'application/json'
         },
         success:function(resualt){
-            loadFieldTable()
+            loadFieldTable();
+            clearFieldFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -364,7 +366,8 @@ $('#field_table').on('click' ,'#field_delete' ,function(){
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },success:function(crop){
-                    loadCropTable();
+                    genarateNextFieldId();
+                    loadFieldTable();
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -383,3 +386,18 @@ $('#field_table').on('click' ,'#field_delete' ,function(){
     });
 
 });
+
+function clearFieldFields(){
+
+    $('#field_code').val('');
+    $('#field_name').val('');
+    $('#field_location').val('');
+    $('#field_size').val('');
+    $('#field1_base64_input').val('');
+    $('#field2_base64_input').val('');
+    $('#field1_input').val('');
+    $('#field2_input').val('');
+    $("#fieldImg1_previw").attr("src", "images/img.png");
+    $("#fieldImg2_previw").attr("src", "images/img.png")
+
+}
