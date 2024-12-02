@@ -61,6 +61,10 @@ function callPageFunction(page) {
         setStaffId();
     }
 
+    if(page == "#staff_section"){
+        genarateNextStaffId();
+    }
+
 }
 
 
