@@ -376,4 +376,92 @@ $('#log_table').on('click' ,'#log_view' ,function(){
 })
 
 
+// ---------------------------------- Update Log ---------------------------------------------
 
+
+$('#log_table').on('click' ,'#log_update' ,function(){
+
+    var logId = $(this).closest('tr').find('td').first().text();
+    console.log(logId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`log?data=${logId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(log =>{
+
+                $('#log_code').val(log.log_code),
+                $('#log_date').val(log.log_date.split("T")[0]),
+                $('#log_details').val(log.log_details),
+                $('#log_base64_input').val(log.observed_image),
+                $("#log_Img1_previw").attr("src", log.observed_image);
+                $('#log_field_id').val(log.field_code),
+                $('#log_crop_id').val(log.crop_code),
+                $('#log_staff_id').val(log.staff_id)
+
+                navigateToPage('#log_registerSection');
+                activeNavBarButton('#monitering-log_nav');
+                changeLogState("Update");
+
+            })
+
+        },
+        error:function(log){
+            console.log(log);
+        }
+    })
+
+})
+
+
+$('#update_log').on('click' ,()=>{
+
+    var logDate = {
+        log_code: $('#log_code').val(),
+        log_date: $('#log_date').val(),
+        log_details: $('#log_details').val(),
+        observed_image: $('#log_base64_input').val(),
+        field_code: $('#log_field_id').val(),
+        crop_code: $('#log_crop_id').val(),
+        staff_id: $('#log_staff_id').val()
+      }
+      
+
+      console.log(logDate);
+
+      if(!validateLog(logDate)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"PATCH",
+        url:baseUrl+`log`,
+        processData: false,
+        data:JSON.stringify(logDate),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            loadLogTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Log successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+})
