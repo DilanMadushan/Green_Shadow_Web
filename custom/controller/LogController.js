@@ -325,3 +325,46 @@ function validateLog(logDate){
     }
     return true;
 }
+
+
+
+// ---------------------------------- View Log ---------------------------------------------
+
+$('#log_table').on('click' ,'#log_view' ,function(){
+
+    var logId = $(this).closest('tr').find('td').first().text();
+    console.log(logId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`log?data=${logId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(log =>{
+
+                $('#log_code').val(log.log_code),
+                $('#log_date').val(log.log_date.split("T")[0]),
+                $('#log_details').val(log.log_details),
+                $('#log_base64_input').val(log.observed_image),
+                $("#log_Img1_previw").attr("src", log.observed_image);
+                $('#log_field_id').val(log.field_code),
+                $('#log_crop_id').val(log.crop_code),
+                $('#log_staff_id').val(log.staff_id)
+
+                navigateToPage('#log_registerSection');
+                activeNavBarButton('#monitering-log_nav');
+                changeLogState("View");
+
+            })
+
+        },
+        error:function(log){
+            console.log(log);
+        }
+    })
+
+})
