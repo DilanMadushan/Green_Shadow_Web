@@ -63,6 +63,7 @@ function callPageFunction(page) {
 
     if(page == "#staff_section"){
         genarateNextStaffId();
+        loadLogTable();
     }
 
 }
