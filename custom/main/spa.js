@@ -87,6 +87,7 @@ $('#crop_nav').click(function () {
 });
 
 $('#add_crop').click(function () {
+    clearCropFields();
     navigateToPage('#crop_registerSection');
     activeNavBarButton('#crop_nav');
 });
@@ -97,6 +98,7 @@ $('#field_nav').click(function (){
 })
 
 $('#add_Field').click(function (){
+    clearFieldFields();
     navigateToPage('#field_registerSection');
     activeNavBarButton('#field_nav');
     chageFieldState("Save");
@@ -108,6 +110,7 @@ $('#monitering-log_nav').click(function (){
 })
 
 $('#add_log').click(function (){
+    clearLogFields();
     navigateToPage('#log_registerSection');
     activeNavBarButton('#monitering-log_nav');
     changeLogState("Save");

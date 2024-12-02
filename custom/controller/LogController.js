@@ -136,27 +136,6 @@ function setFieldId(){
 
 }
 
-function setCropIds(){
-    $.ajax({
-        method: "GET",
-        url: baseUrl+`crop`,
-        headers: {
-            'Authorization': `Bearer ${token}`
-        },
-        success: function(resualt){
-             $('#log_crop_id').append(`<option value="">Crop</option>`);
-
-            resualt.forEach(function(crop){
-                $('#log_crop_id').append(`<option value="${crop.crop_code}">${crop.crop_code}</option>`);
-                
-            })
-
-        },error:function(resualt){
-            console.log(resualt)
-        }
-    })
-}
-
 
 function setStaffId(){
 
@@ -283,6 +262,7 @@ $('#save_log').on('click' ,()=>{
         success:function(resualt){
             genarateNextLogId();
             loadLogTable();
+            clearLogFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -512,3 +492,18 @@ $('#log_table').on('click' ,'#log_delete' ,function(){
     });
     
 })
+
+
+function clearLogFields(){
+
+    $('#log_input').val('');
+    $('#log_base64_input').val('');
+    $("#log_Img1_previw").attr("src", "images/img.png");
+        
+    $('#log_code').val('');
+    $('#log_date').val('');
+    $('#log_crop_id').val('Crop').change();
+    $('#log_field_id').val('Field').change();
+    $('#log_staff_id').val('Staff').change();
+    $('#log_details').val('');
+}

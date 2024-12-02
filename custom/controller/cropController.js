@@ -282,6 +282,7 @@ $('#crop_table').on('click', '#crop_update' ,function(){
             $('#crop_commen_name').val(crop.common_name);
             $('#crop_Scientific_name').val(crop.scientific_name)
             $('#cropImg_previw').attr("src", crop.crop_image);
+            $('#cropbase64_input').val(crop.crop_image);
             $('#crop_catagary').val(crop.category);
             $('#crop_Season').val(crop.crop_season);
             $('#crop_field_ids').val(crop.field_code);
@@ -412,6 +413,7 @@ $('#crop_table').on('click', '#crop_view' ,function(){
             $('#crop_commen_name').val(crop.common_name);
             $('#crop_Scientific_name').val(crop.scientific_name)
             $('#cropImg_previw').attr("src", crop.crop_image);
+            $('#cropbase64_input').val(crop.crop_image);
             $('#crop_catagary').val(crop.category);
             $('#crop_Season').val(crop.crop_season);
             $('#crop_field_ids').val(crop.field_code);
@@ -433,6 +435,7 @@ function clearCropFields(){
     $('#crop_commen_name').val("");
     $('#crop_Scientific_name').val("")
     $('#cropImg_previw').attr("src", "images/img.png");
+    $('#cropbase64_input').val('');
     $('#crop_input').val("");
     $('#crop_catagary').val('Category').change();
     $('#crop_Season').val("");
