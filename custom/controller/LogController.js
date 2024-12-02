@@ -123,9 +123,58 @@ function setFieldId(){
             'Content-Type': 'application/json'
         },success:function(resualt){
 
-            resualt.forEach(crop => {
+            resualt.forEach(field => {
 
-                $('#log_field_id').append(`<option value="${crop.field_code}">${crop.field_code}</option>`) 
+                $('#log_field_id').append(`<option value="${field.field_code}">${field.field_code}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+function setCropIds(){
+    $.ajax({
+        method: "GET",
+        url: baseUrl+`crop`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        success: function(resualt){
+             $('#log_crop_id').append(`<option value="">Crop</option>`);
+
+            resualt.forEach(function(crop){
+                $('#log_crop_id').append(`<option value="${crop.crop_code}">${crop.crop_code}</option>`);
+                
+            })
+
+        },error:function(resualt){
+            console.log(resualt)
+        }
+    })
+}
+
+
+function setStaffId(){
+
+    $('#log_staff_id').append(`<option value="">Staff</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(staff => {
+                console.log(staff);
+                
+
+                $('#log_staff_id').append(`<option value="${staff.staff_id}">${staff.staff_id}</option>`) 
             });
 
         },

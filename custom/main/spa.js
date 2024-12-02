@@ -58,6 +58,7 @@ function callPageFunction(page) {
         loadLogTable();
         setCropIds();
         setFieldId();
+        setStaffId();
     }
 
 }

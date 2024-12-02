@@ -37,14 +37,14 @@ function loadFieldTable(){
             'Content-Type': 'application/json'
         },success:function(resualt){
 
-            resualt.forEach(crop => {
+            resualt.forEach(field => {
 
                 $('#field_table tbody').append(`<tr>
                                         
-                                        <td>${crop.field_code}</td>
-                                        <td>${crop.field_Name}</td>
-                                        <td>${crop.field_location}</td>
-                                        <td>${crop.extent_size_of_field}</td>
+                                        <td>${field.field_code}</td>
+                                        <td>${field.field_Name}</td>
+                                        <td>${field.field_location}</td>
+                                        <td>${field.extent_size_of_field}</td>
                                         <td>
                                             <button class="btn btn-primary btn-sm" title="View" id="view_Field">
                                                 <i class="fa fa-eye"></i>
