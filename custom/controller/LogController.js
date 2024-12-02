@@ -243,6 +243,12 @@ function changeLogState(state){
 
 }
 
+
+$('#cancel_log').on('click',()=>{
+    navigateToPage('#log_section');
+    activeNavBarButton('#monitering-log_nav');
+})
+
 // ---------------------------------- Save Log ---------------------------------------------
 
 $('#save_log').on('click' ,()=>{
@@ -368,3 +374,6 @@ $('#log_table').on('click' ,'#log_view' ,function(){
     })
 
 })
+
+
+
