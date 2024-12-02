@@ -153,6 +153,11 @@ function changeStaffState(state){
 
 }
 
+$('#cancle_staff').on('click' ,()=>{
+    navigateToPage('#staff_section');
+    activeNavBarButton('#staff_nav');
+})
+
 // ---------------------------- View Staff ----------------------------
 
 $('#staff_table').on('click' ,'#staff_view' ,function(){
@@ -389,6 +394,51 @@ $('#update_staff').on('click' ,()=>{
             console.log(resualt);
         }
 
+    })
+
+})
+
+
+// ---------------------------- Delete Staff ----------------------------
+
+$('#staff_table').on('click' ,'#staff_delete' ,function(){
+
+    let staff_id = $(this).closest('tr').find('td').first().text();
+    console.log(staff_id);
+    
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+
+    }).then((result) =>{
+        if(result.isConfirmed){
+            $.ajax({
+                method:"DELETE",
+                url:baseUrl+`staff/${staff_id}`,
+                headers:{
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                success:function(staff){
+                    loadStaffTable();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Delete Staff successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+        
+                },error:function(crop){
+                    console.log(crop);
+                }
+            })
+        }
     })
 
 })
