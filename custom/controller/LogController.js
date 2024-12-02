@@ -184,3 +184,61 @@ function setStaffId(){
     })
 
 }
+
+function changeLogState(state){
+
+    if(state == "Save"){
+
+        $('#save_log').show();
+        $('#update_log').hide();
+
+
+        $('#field1_upload').attr('disabled',false);
+        $('#log_upload').attr('disabled',false);
+        
+        $('#log_code').attr('disabled',true);
+        $('#log_date').attr('disabled',false);
+        $('#log_crop_id').attr('disabled',false);
+        $('#log_field_id').attr('disabled',false);
+        $('#log_staff_id').attr('disabled',false);
+        $('#log_details').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_log').hide();
+        $('#update_log').hide();
+
+
+        $('#field1_upload').attr('disabled',true);
+        $('#log_upload').attr('disabled',true);
+        
+        $('#log_code').attr('disabled',true);
+        $('#log_date').attr('disabled',true);
+        $('#log_crop_id').attr('disabled',true);
+        $('#log_field_id').attr('disabled',true);
+        $('#log_staff_id').attr('disabled',true);
+        $('#log_details').attr('disabled',true);
+
+    }
+
+    if(state == "Update"){
+
+        $('#save_log').hide();
+        $('#update_log').show();
+
+
+        $('#field1_upload').attr('disabled',false);
+        $('#log_upload').attr('disabled',false);
+        
+        $('#log_code').attr('disabled',true);
+        $('#log_date').attr('disabled',false);
+        $('#log_crop_id').attr('disabled',false);
+        $('#log_field_id').attr('disabled',false);
+        $('#log_staff_id').attr('disabled',false);
+        $('#log_details').attr('disabled',false);
+
+    }
+
+}

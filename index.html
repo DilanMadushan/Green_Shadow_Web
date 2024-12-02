@@ -1717,7 +1717,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Date</label>
-                                        <input type="date" class="form-control" placeholder="Main Field">
+                                        <input type="date" class="form-control" placeholder="Main Field" id="log_date">
                                     </div>
                                 </div>
 
@@ -1752,18 +1752,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Details</label>
-                                        <textarea class="form-control" rows="4"></textarea>
+                                        <textarea class="form-control" rows="4" id="log_details"></textarea>
                                     </div>
                                 </div>
 
 
                                 <div class="col-md-12">
                                     <div class="form-group d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-2">Add
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">Cancel
-                                        </button>
-
+                                        <button type="submit" class="btn btn-primary mr-2" id="save_log">Add</button>
+                                        <button type="submit" class="btn btn-primary mr-2" id="update_log">Update</button>
+                                        <button type="submit" class="btn btn-danger" id="cancel_log">Cancel</button>
                                     </div>
                                 </div>
 

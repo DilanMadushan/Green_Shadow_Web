@@ -110,6 +110,7 @@ $('#monitering-log_nav').click(function (){
 $('#add_log').click(function (){
     navigateToPage('#log_registerSection');
     activeNavBarButton('#monitering-log_nav');
+    changeLogState("Save");
 })
 
 $('#staff_nav').click(function (){

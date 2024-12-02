@@ -68,7 +68,7 @@
 (function ($) {
     'use strict';
     $(function () {
-        $('#log__upload').on('click', function () {
+        $('#log_upload').on('click', function () {
             var file = $(this).parent().parent().parent().find('#log_button');
             file.trigger('click');
         });
