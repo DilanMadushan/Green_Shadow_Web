@@ -63,7 +63,7 @@ function callPageFunction(page) {
 
     if(page == "#staff_section"){
         genarateNextStaffId();
-        loadLogTable();
+        loadStaffTable();
     }
 
 }
@@ -129,7 +129,7 @@ $('#staff_nav').click(function (){
 $('#add_staff').click(function (){
     navigateToPage('#staff_registerSection');
     activeNavBarButton('#staff_nav');
-    changeStafState("Save");
+    changeStaffState("Save")
 })
 
 $('#equipment_nav').click(function (){

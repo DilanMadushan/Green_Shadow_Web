@@ -26,7 +26,7 @@ function genarateNextStaffId(){
 }
 
 
-function loadLogTable(){
+function loadStaffTable(){
 
     $('#staff_table tbody').empty();
 
@@ -111,7 +111,7 @@ function changeStaffState(state){
 
         $('#save_staff').show();
         $('#update_staff').hide();
-        $('#cancle_staff').show();
+        $('#cancle_staff').hide();
 
         $('#staff_id').attr('disabled', true);
         $('#staff_first_name').attr('disabled', false);
@@ -153,6 +153,7 @@ function changeStaffState(state){
 
 }
 
+// ---------------------------- View Staff ----------------------------
 
 $('#staff_table').on('click' ,'#staff_view' ,function(){
 
@@ -193,3 +194,104 @@ $('#staff_table').on('click' ,'#staff_view' ,function(){
         }
     })
 })
+
+
+// ---------------------------- Save Staff ----------------------------
+
+
+$('#save_staff').on('click' ,function(){
+    var staffData = {
+        staff_id: $('#staff_id').val(),
+        first_name: $('#staff_first_name').val(),
+        last_name: $('#staff_last_name').val(),
+        dob: $('#staff_dob').val(),
+        gender: $('#staff_gender').val(),
+        joinedDate: $('#staff_joind_date').val(),
+        address_line_1: $('#staff_address1').val(),
+        address_line_2: $('#staff_address2').val(),
+        address_line_3: $('#staff_address3').val(),
+        address_line_4: $('#staff_address4').val(),
+        address_line_5: $('#staff_address5').val(),
+        tel: $('#staff_mobile').val(),
+        email: $('#staff_email').val(),
+        role: $('#staff_role').val()
+    };
+
+
+    if(!validateCrop(staffData)){
+        return
+    }
+
+    $.ajax({
+        method:"POST",
+        url: baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        processData: false,
+        data:JSON.stringify(staffData),
+        contentType:"application.json",
+        success:function(resualt){
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Save Staff successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(resualt){
+            console.log(resualt);
+        }
+
+    })
+
+          
+
+})
+
+
+function validateCrop(staff){
+
+    console.log(staff);
+    
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    const requiredFields = [
+        { field: staff.staff_id, message: "Staff ID is required" },
+        { field: staff.first_name, message: "First name is required" },
+        { field: staff.last_name, message: "Last name is required" },
+        { field: staff.dob, message: "Date of birth is required" },
+        { field: staff.gender, message: "Gender is required" },
+        { field: staff.joinedDate, message: "Joined date is required" },
+        { field: staff.address_line_1, message: "Address is required" },
+        { field: staff.address_line_2, message: "Lane is required" },
+        { field: staff.address_line_3, message: "Main City is required" },
+        { field: staff.address_line_4, message: "Main State is required" },
+        { field: staff.address_line_5, message: "Postal Code is required" },
+        { field: staff.tel, message: "Mobile number is required" },
+        { field: staff.email, message: "Email is required" },
+        { field: staff.role, message: "Role is required" }
+    ];
+
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+
+
+}
