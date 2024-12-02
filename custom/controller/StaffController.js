@@ -40,19 +40,6 @@ function loadLogTable(){
     
             resualt.forEach(function(staff){
 
-                console.log(staff);
-
-                
-                // th>Staff Id</th>
-                //                         <th>First Name</th>
-                //                         <th>Joined Date</th>
-                //                         <th>Role</th>
-                //                         <th>Address</th>
-                //                         <th>Tel</th>
-                //                         <th>Email</th>
-                //                         <th>Action</th>
-                
-
                 $('#staff_table tbody').append(`<tr>
                                         <td>${staff.staff_id}</td>
                                         <td>${staff.first_name}</td>
@@ -92,6 +79,79 @@ function setStaffCount(){
         $('#staff_count').text("0"+count)
     }else{
         $('#staff_count').text(count)
+    }
+
+}
+
+function changeStafState(state){
+
+    if(state=="View"){
+
+        $('#save_staff').hide();
+        $('#update_staff').hide();
+        $('#cancle_staff').show();
+
+        $('#staff_id').attr('disabled', true);
+        $('#staff_first_name').attr('disabled', true);
+        $('#staff_last_name').attr('disabled', true);
+        $('#staff_dob').attr('disabled', true);
+        $('#staff_gender').attr('disabled', true);
+        $('#staff_joind_date').attr('disabled', true);
+        $('#staff_address1').attr('disabled', true);
+        $('#staff_address2').attr('disabled', true);
+        $('#staff_address3').attr('disabled', true);
+        $('#staff_address4').attr('disabled', true);
+        $('#staff_address5').attr('disabled', true);
+        $('#staff_mobile').attr('disabled', true);
+        $('#staff_email').attr('disabled', true);
+        $('#staff_role').attr('disabled', true);
+        $('#staff_email').attr('disabled', true);
+    }
+
+    if(state=="Save"){
+
+        $('#save_staff').show();
+        $('#update_staff').hide();
+        $('#cancle_staff').show();
+
+        $('#staff_id').attr('disabled', true);
+        $('#staff_first_name').attr('disabled', false);
+        $('#staff_last_name').attr('disabled', false);
+        $('#staff_dob').attr('disabled', false);
+        $('#staff_gender').attr('disabled', false);
+        $('#staff_joind_date').attr('disabled', false);
+        $('#staff_address1').attr('disabled', false);
+        $('#staff_address2').attr('disabled', false);
+        $('#staff_address3').attr('disabled', false);
+        $('#staff_address4').attr('disabled', false);
+        $('#staff_address5').attr('disabled', false);
+        $('#staff_mobile').attr('disabled', false);
+        $('#staff_email').attr('disabled', false);
+        $('#staff_role').attr('disabled', false);
+        $('#staff_email').attr('disabled', false);
+    }
+
+    if(state=="Update"){
+
+        $('#save_staff').hide();
+        $('#update_staff').show();
+        $('#cancle_staff').show();
+
+        $('#staff_id').attr('disabled', true);
+        $('#staff_first_name').attr('disabled', false);
+        $('#staff_last_name').attr('disabled', false);
+        $('#staff_dob').attr('disabled', false);
+        $('#staff_gender').attr('disabled', false);
+        $('#staff_joind_date').attr('disabled', false);
+        $('#staff_address1').attr('disabled', false);
+        $('#staff_address2').attr('disabled', false);
+        $('#staff_address3').attr('disabled', false);
+        $('#staff_address4').attr('disabled', false);
+        $('#staff_address5').attr('disabled', false);
+        $('#staff_mobile').attr('disabled', false);
+        $('#staff_email').attr('disabled', false);
+        $('#staff_role').attr('disabled', false);
+        $('#staff_email').attr('disabled', false);
     }
 
 }
