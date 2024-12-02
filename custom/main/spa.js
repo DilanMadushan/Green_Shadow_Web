@@ -62,6 +62,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#staff_section"){
+        clearStaffFields();
         genarateNextStaffId();
         loadStaffTable();
     }
@@ -127,9 +128,10 @@ $('#staff_nav').click(function (){
 })
 
 $('#add_staff').click(function (){
+    // clearStaffFields();
     navigateToPage('#staff_registerSection');
     activeNavBarButton('#staff_nav');
-    changeStaffState("Save")
+    changeStaffState("Save");
 })
 
 $('#equipment_nav').click(function (){

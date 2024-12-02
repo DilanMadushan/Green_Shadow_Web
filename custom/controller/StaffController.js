@@ -240,6 +240,7 @@ $('#save_staff').on('click' ,function(){
         success:function(resualt){
             loadStaffTable();
             genarateNextStaffId();
+            clearStaffFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -442,3 +443,20 @@ $('#staff_table').on('click' ,'#staff_delete' ,function(){
     })
 
 })
+
+function clearStaffFields(){
+    $('#staff_id').val('');
+    $('#staff_first_name').val('');
+    $('#staff_last_name').val('');
+    $('#staff_dob').val('');
+    $('#staff_gender').val('Gender').change();
+    $('#staff_joind_date').val('');
+    $('#staff_address1').val('');
+    $('#staff_address2').val('');
+    $('#staff_address3').val('');
+    $('#staff_address4').val('');
+    $('#staff_address5').val('');
+    $('#staff_mobile').val('');
+    $('#staff_email').val('');
+    $('#staff_role').val('Role').change();
+}
