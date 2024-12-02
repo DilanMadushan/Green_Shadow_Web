@@ -194,7 +194,7 @@ function changeLogState(state){
 
 
         $('#field1_upload').attr('disabled',false);
-        $('#log_upload').attr('disabled',false);
+        $('#log__upload').attr('disabled',false);
         
         $('#log_code').attr('disabled',true);
         $('#log_date').attr('disabled',false);
@@ -212,7 +212,7 @@ function changeLogState(state){
 
 
         $('#field1_upload').attr('disabled',true);
-        $('#log_upload').attr('disabled',true);
+        $('#log__upload').attr('disabled',true);
         
         $('#log_code').attr('disabled',true);
         $('#log_date').attr('disabled',true);
@@ -230,7 +230,7 @@ function changeLogState(state){
 
 
         $('#field1_upload').attr('disabled',false);
-        $('#log_upload').attr('disabled',false);
+        $('#log__upload').attr('disabled',false);
         
         $('#log_code').attr('disabled',true);
         $('#log_date').attr('disabled',false);
@@ -241,4 +241,87 @@ function changeLogState(state){
 
     }
 
+}
+
+// ---------------------------------- Save Log ---------------------------------------------
+
+$('#save_log').on('click' ,()=>{
+    var logDate = {
+        log_code: $('#log_code').val(),
+        log_date: $('#log_date').val(),
+        log_details: $('#log_details').val(),
+        observed_image: $('#log_base64_input').val(),
+        field_code: $('#log_field_id').val(),
+        crop_code: $('#log_crop_id').val(),
+        staff_id: $('#log_staff_id').val()
+      }
+      
+
+      console.log(logDate);
+
+      if(!validateLog(logDate)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`log`,
+        processData: false,
+        data:JSON.stringify(logDate),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextLogId();
+            loadLogTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Save Log successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+
+function validateLog(logDate){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };      
+
+    const requiredFields = [
+        {field: logDate.log_code, message: "Log Code is required"},
+        {field: logDate.log_date, message: "Date is required"},
+        {field: logDate.log_details, message: "Log Details are required"},
+        {field: logDate.observed_image, message: "Image is required"},
+        {field: logDate.field_code, message: "Field is required"},
+        {field: logDate.crop_code, message: "Crop is required"},
+        {field: logDate.staff_id, message: "Staff is required"}
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
 }
