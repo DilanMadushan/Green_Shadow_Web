@@ -57,6 +57,7 @@ function callPageFunction(page) {
         genarateNextLogId();
         loadLogTable();
         setCropIds();
+        setFieldId();
     }
 
 }

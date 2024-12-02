@@ -97,10 +97,10 @@ function setCropIds(){
             'Authorization': `Bearer ${token}`
         },
         success: function(resualt){
-             $('#field_crop_id').append(`<option value="">Crop</option>`);
+             $('#log_crop_id').append(`<option value="">Crop</option>`);
 
             resualt.forEach(function(crop){
-                $('#field_crop_id').append(`<option value="${crop.crop_code}">${crop.crop_code}</option>`);
+                $('#log_crop_id').append(`<option value="${crop.crop_code}">${crop.crop_code}</option>`);
                 
             })
 
@@ -108,4 +108,30 @@ function setCropIds(){
             console.log(resualt)
         }
     })
+}
+
+
+function setFieldId(){
+
+    $('#log_field_id').append(`<option value="">Field</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(crop => {
+
+                $('#log_field_id').append(`<option value="${crop.field_code}">${crop.field_code}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
 }
