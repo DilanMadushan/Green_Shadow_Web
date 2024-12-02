@@ -88,3 +88,24 @@ function setLogCount(){
     }
 
 }
+
+function setCropIds(){
+    $.ajax({
+        method: "GET",
+        url: baseUrl+`crop`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        success: function(resualt){
+             $('#field_crop_id').append(`<option value="">Crop</option>`);
+
+            resualt.forEach(function(crop){
+                $('#field_crop_id').append(`<option value="${crop.crop_code}">${crop.crop_code}</option>`);
+                
+            })
+
+        },error:function(resualt){
+            console.log(resualt)
+        }
+    })
+}
