@@ -111,7 +111,7 @@ function changeStaffState(state){
 
         $('#save_staff').show();
         $('#update_staff').hide();
-        $('#cancle_staff').hide();
+        $('#cancle_staff').show();
 
         $('#staff_id').attr('disabled', true);
         $('#staff_first_name').attr('disabled', false);
@@ -233,6 +233,8 @@ $('#save_staff').on('click' ,function(){
         data:JSON.stringify(staffData),
         contentType:"application.json",
         success:function(resualt){
+            loadStaffTable();
+            genarateNextStaffId();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -295,3 +297,98 @@ function validateCrop(staff){
 
 
 }
+
+
+// ---------------------------- Update Staff ----------------------------
+
+$('#staff_table').on('click' ,'#staff_update' ,function(){
+
+    let staff_id = $(this).closest('tr').find('td').first().text();
+    console.log(staff_id);
+    
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff/${staff_id}`,
+        headers:{
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(staff){
+
+            $('#staff_id').val(staff.staff_id);
+            $('#staff_first_name').val(staff.first_name);
+            $('#staff_last_name').val(staff.last_name);
+            $('#staff_dob').val(staff.dob.split("T")[0]);
+            $('#staff_gender').val(staff.gender);
+            $('#staff_joind_date').val(staff.joinedDate.split("T")[0]);
+            $('#staff_address1').val(staff.address_line_1);
+            $('#staff_address2').val(staff.address_line_2);
+            $('#staff_address3').val(staff.address_line_3);
+            $('#staff_address4').val(staff.address_line_4);
+            $('#staff_address5').val(staff.address_line_5);
+            $('#staff_mobile').val(staff.tel);
+            $('#staff_email').val(staff.email);
+            $('#staff_role').val(staff.role);
+
+            changeStaffState("Update")
+            navigateToPage('#staff_registerSection');
+            activeNavBarButton('#staff_nav');
+
+        },error:function(crop){
+            console.log(crop);
+        }
+    })
+})
+
+$('#update_staff').on('click' ,()=>{
+
+    var staffData = {
+        staff_id: $('#staff_id').val(),
+        first_name: $('#staff_first_name').val(),
+        last_name: $('#staff_last_name').val(),
+        dob: $('#staff_dob').val(),
+        gender: $('#staff_gender').val(),
+        joinedDate: $('#staff_joind_date').val(),
+        address_line_1: $('#staff_address1').val(),
+        address_line_2: $('#staff_address2').val(),
+        address_line_3: $('#staff_address3').val(),
+        address_line_4: $('#staff_address4').val(),
+        address_line_5: $('#staff_address5').val(),
+        tel: $('#staff_mobile').val(),
+        email: $('#staff_email').val(),
+        role: $('#staff_role').val()
+    };
+
+
+    if(!validateCrop(staffData)){
+        return
+    }
+
+    $.ajax({
+        method:"PATCH",
+        url: baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        processData: false,
+        data:JSON.stringify(staffData),
+        contentType:"application.json",
+        success:function(resualt){
+            loadStaffTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Staff successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(resualt){
+            console.log(resualt);
+        }
+
+    })
+
+})
