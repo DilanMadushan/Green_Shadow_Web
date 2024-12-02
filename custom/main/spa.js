@@ -129,6 +129,7 @@ $('#staff_nav').click(function (){
 $('#add_staff').click(function (){
     navigateToPage('#staff_registerSection');
     activeNavBarButton('#staff_nav');
+    changeStafState("Save");
 })
 
 $('#equipment_nav').click(function (){

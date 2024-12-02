@@ -50,13 +50,13 @@ function loadLogTable(){
                                         <td>${staff.email}</td>
                                         
                                         <td>
-                                            <button class="btn btn-primary btn-sm" title="View">
+                                            <button class="btn btn-primary btn-sm" title="View" id="staff_view">
                                                 <i class="fa fa-eye"></i>
                                             </button>
-                                            <button class="btn btn-primary btn-sm" title="Update">
+                                            <button class="btn btn-primary btn-sm" title="Update" id="staff_update">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm" title="Delete">
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="staff_delete">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
@@ -83,7 +83,7 @@ function setStaffCount(){
 
 }
 
-function changeStafState(state){
+function changeStaffState(state){
 
     if(state=="View"){
 
@@ -105,7 +105,6 @@ function changeStafState(state){
         $('#staff_mobile').attr('disabled', true);
         $('#staff_email').attr('disabled', true);
         $('#staff_role').attr('disabled', true);
-        $('#staff_email').attr('disabled', true);
     }
 
     if(state=="Save"){
@@ -128,7 +127,6 @@ function changeStafState(state){
         $('#staff_mobile').attr('disabled', false);
         $('#staff_email').attr('disabled', false);
         $('#staff_role').attr('disabled', false);
-        $('#staff_email').attr('disabled', false);
     }
 
     if(state=="Update"){
@@ -151,7 +149,47 @@ function changeStafState(state){
         $('#staff_mobile').attr('disabled', false);
         $('#staff_email').attr('disabled', false);
         $('#staff_role').attr('disabled', false);
-        $('#staff_email').attr('disabled', false);
     }
 
 }
+
+
+$('#staff_table').on('click' ,'#staff_view' ,function(){
+
+    let staff_id = $(this).closest('tr').find('td').first().text();
+    console.log(staff_id);
+    
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff/${staff_id}`,
+        headers:{
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(staff){
+
+            $('#staff_id').val(staff.staff_id);
+            $('#staff_first_name').val(staff.first_name);
+            $('#staff_last_name').val(staff.last_name);
+            $('#staff_dob').val(staff.dob.split("T")[0]);
+            $('#staff_gender').val(staff.gender);
+            $('#staff_joind_date').val(staff.joinedDate.split("T")[0]);
+            $('#staff_address1').val(staff.address_line_1);
+            $('#staff_address2').val(staff.address_line_2);
+            $('#staff_address3').val(staff.address_line_3);
+            $('#staff_address4').val(staff.address_line_4);
+            $('#staff_address5').val(staff.address_line_5);
+            $('#staff_mobile').val(staff.tel);
+            $('#staff_email').val(staff.email);
+            $('#staff_role').val(staff.role);
+
+            changeStaffState("View")
+            navigateToPage('#staff_registerSection');
+            activeNavBarButton('#staff_nav');
+
+        },error:function(crop){
+            console.log(crop);
+        }
+    })
+})
