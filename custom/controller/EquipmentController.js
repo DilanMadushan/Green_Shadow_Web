@@ -231,3 +231,83 @@ $('#equipment_table').on('click' ,'#view_equipment' ,function(){
     })
 
 })
+
+
+// ---------------------------------- Update Equipment ---------------------------------------------
+
+$('#equipment_table').on('click' ,'#equipment_update' ,function(){
+
+    var equipmentId = $(this).closest('tr').find('td').first().text();
+    console.log(equipmentId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipment/${equipmentId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(equipment){
+
+            $('#equipment_id').val(equipment.equipment_Id),
+            $('#equipment_name').val(equipment.name),
+            $('#equipment_type').val(equipment.type),
+            $('#equipment_status').val(equipment.status)
+
+
+            navigateToPage('#equipment_registerSection');
+            activeNavBarButton('#equipment_nav');
+            chageEquipmentState("Update");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
+
+
+$('#update_equipment').on('click' ,()=>{
+    var equipmentData = {
+        equipment_Id : $('#equipment_id').val(),
+        name : $('#equipment_name').val(),
+        type : $('#equipment_type').val(),
+        status : $('#equipment_status').val()
+      }
+
+      console.log(equipmentData);
+
+      if(!validateEquipment(equipmentData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"PATCH",
+        url:baseUrl+`equipment`,
+        processData: false,
+        data:JSON.stringify(equipmentData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            loadEquipmentTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Equipment successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
