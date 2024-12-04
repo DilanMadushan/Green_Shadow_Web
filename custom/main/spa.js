@@ -70,7 +70,7 @@ function callPageFunction(page) {
 
     if(page == "#equipment_section"){
         genarateNextEquipmentId();
-        loadFieldTable();
+        loadEquipmentTable();
     }
 
 }
@@ -146,6 +146,7 @@ $('#equipment_nav').click(function (){
 $('#add_equipment').click(function (){
     navigateToPage('#equipment_registerSection');
     activeNavBarButton('#equipment_nav');
+    chageEquipmentState("Save");
 })
 
 $('#borrow_equipemnt').click(function (){

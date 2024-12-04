@@ -25,7 +25,7 @@ function genarateNextEquipmentId(){
     })
 }
 
-function loadFieldTable(){
+function loadEquipmentTable(){
 
     $('#equipment_table tbody').empty();
 
@@ -79,7 +79,7 @@ function loadFieldTable(){
     }
 }
 
-function chageFieldState(state){
+function chageEquipmentState(state){
 
     if(state == "Save"){
 
@@ -119,3 +119,79 @@ function chageFieldState(state){
     }
 }
 
+// ---------------------------------- Save Crop ---------------------------------------------
+
+$('#save_equipment').on('click' ,()=>{
+    var equipmentData = {
+        equipment_Id : $('#equipment_id').val(),
+        name : $('#equipment_name').val(),
+        type : $('#equipment_type').val(),
+        status : $('#equipment_status').val()
+      }
+
+      console.log(equipmentData);
+
+      if(!validateEquipment(equipmentData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`equipment`,
+        processData: false,
+        data:JSON.stringify(equipmentData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextEquipmentId();
+            loadEquipmentTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Save Equipment successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+
+function validateEquipment(equipmentData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    const requiredFields = [
+        {field: equipmentData.equipment_Id, message: "Equipment Id is required"},
+        {field: equipmentData.name, message: "Name is required"},
+        {field: equipmentData.type, message: "Type is required"},
+        {field: equipmentData.status, message: "Status is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}
