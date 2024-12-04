@@ -210,7 +210,7 @@ function validateEquipment(vehicleData){
 }
 
 
-// ---------------------------------- View Equipment ---------------------------------------------
+// ---------------------------------- View Vehicle ---------------------------------------------
 
 
 $('#vehicle_table').on('click' ,'#view_vehicle' ,function(){
@@ -244,4 +244,85 @@ $('#vehicle_table').on('click' ,'#view_vehicle' ,function(){
         }
     })
 
+})
+
+
+// ---------------------------------- Update Vehicle ---------------------------------------------
+
+$('#vehicle_table').on('click' ,'#vehicle_update' ,function(){
+
+    var vehicleId = $(this).closest('tr').find('td').first().text();
+    console.log(vehicleId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`vehicle/${vehicleId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(vehicle){
+ 
+            $('#vehicle_id').val(vehicle.vehicle_code);
+            $('#vehicle_license').val(vehicle.license_plate_number);
+            $('#vehicle_category').val(vehicle.vehicle_category);
+            $('#vehicle_fualType').val(vehicle.fuel_type);
+            $('#vehicle_status').val(vehicle.status);
+            $('#vehicle_remarks').val(vehicle.remarks);
+          
+            navigateToPage('#vehicle_registration');
+            activeNavBarButton('#vehicle_nav');
+            chageVehicleState("Update");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
+
+$('#update_vehicle').on('click' ,()=>{
+    var vehicleData = {
+        vehicle_code: $('#vehicle_id').val(),
+        license_plate_number : $('#vehicle_license').val(),
+        vehicle_category : $('#vehicle_category').val(),
+        fuel_type : $('#vehicle_fualType').val(),
+        status : $('#vehicle_status').val(),
+        remarks : $('#vehicle_remarks').val()
+    }
+
+      console.log(vehicleData);
+
+      if(!validateEquipment(vehicleData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"PATCH",
+        url:baseUrl+`vehicle`,
+        processData: false,
+        data:JSON.stringify(vehicleData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            loadVehicleTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Update Vehicle successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
 })
