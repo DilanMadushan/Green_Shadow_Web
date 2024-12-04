@@ -311,3 +311,49 @@ $('#update_equipment').on('click' ,()=>{
       
 })
 
+
+// ---------------------------------- Delete Equipment ---------------------------------------------
+
+$('#equipment_table').on('click' ,'#equipment_delete' ,function(){
+
+    var equipmentId = $(this).closest('tr').find('td').first().text();
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+
+    }).then((result) =>{
+        if(result.isConfirmed){
+
+            $.ajax({
+                method:"DELETE",
+                url: baseUrl+`equipment/${equipmentId}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },success:function(crop){
+                    genarateNextEquipmentId();
+                    loadEquipmentTable();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Delete Equipment successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+        
+                },error:function(crop){
+                    console.log(crop);
+                }
+                
+            })
+
+        }
+    });
+
+});
