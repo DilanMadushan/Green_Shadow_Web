@@ -69,7 +69,8 @@ function callPageFunction(page) {
     }
 
     if(page == "#equipment_section"){
-        genarateNextEquipmentId()
+        genarateNextEquipmentId();
+        loadFieldTable();
     }
 
 }
