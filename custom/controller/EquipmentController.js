@@ -119,7 +119,7 @@ function chageEquipmentState(state){
     }
 }
 
-// ---------------------------------- Save Crop ---------------------------------------------
+// ---------------------------------- Save Equipment ---------------------------------------------
 
 $('#save_equipment').on('click' ,()=>{
     var equipmentData = {
@@ -195,3 +195,39 @@ function validateEquipment(equipmentData){
     }
     return true;
 }
+
+
+// ---------------------------------- View Equipment ---------------------------------------------
+
+
+$('#equipment_table').on('click' ,'#view_equipment' ,function(){
+
+    var equipmentId = $(this).closest('tr').find('td').first().text();
+    console.log(equipmentId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipment/${equipmentId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(equipment){
+
+            $('#equipment_id').val(equipment.equipment_Id),
+            $('#equipment_name').val(equipment.name),
+            $('#equipment_type').val(equipment.type),
+            $('#equipment_status').val(equipment.status)
+
+
+            navigateToPage('#equipment_registerSection');
+            activeNavBarButton('#equipment_nav');
+            chageEquipmentState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
