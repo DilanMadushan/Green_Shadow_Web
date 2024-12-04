@@ -78,3 +78,44 @@ function loadFieldTable(){
         }
     }
 }
+
+function chageFieldState(state){
+
+    if(state == "Save"){
+
+        $('#save_equipment').show();
+        $('#update_equipment').hide();
+
+        $('#equipment_id').attr('disabled',true);
+        $('#equipment_name').attr('disabled',false);
+        $('#equipment_type').attr('disabled',false);
+        $('#equipment_status').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_equipment').hide();
+        $('#update_equipment').hide();
+
+        $('#equipment_id').attr('disabled',true);
+        $('#equipment_name').attr('disabled',true);
+        $('#equipment_type').attr('disabled',true);
+        $('#equipment_status').attr('disabled',true);
+
+
+    }
+
+    if(state == "Update"){
+
+        $('#save_equipment').hide();
+        $('#update_equipment').show();
+
+        $('#equipment_id').attr('disabled',true);
+        $('#equipment_name').attr('disabled',false);
+        $('#equipment_type').attr('disabled',false);
+        $('#equipment_status').attr('disabled',false);
+
+    }
+}
+
