@@ -183,6 +183,7 @@ $('#vehicle_nav').click(function (){
 $('#add_vehicle').click(function (){
     navigateToPage('#vehicle_registration');
     activeNavBarButton('#vehicle_nav');
+    chageVehicleState("Save");
 })
 
 $('#borrow_vehicle').click(function (){

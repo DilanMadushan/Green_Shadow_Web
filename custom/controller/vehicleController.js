@@ -80,3 +80,45 @@ function loadVehicleTable(){
         }
     }
 }
+
+
+function chageVehicleState(state){
+
+    if(state == "Save"){
+
+        $('#save_vehicle').show();
+        $('#update_vehicle').hide();
+
+        $('#vehicle_id').attr('disabled',true);
+        $('#vehicle_license').attr('disabled',false);
+        $('#vehicle_fualType').attr('disabled',false);
+        $('#vehicle_status').attr('disabled',false);
+        $('#vehicle_remarks').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_vehicle').hide();
+        $('#update_vehicle').hide();
+
+        $('#vehicle_id').attr('disabled',true);
+        $('#vehicle_license').attr('disabled',true);
+        $('#vehicle_fualType').attr('disabled',true);
+        $('#vehicle_status').attr('disabled',true);
+        $('#vehicle_remarks').attr('disabled',true);
+
+    }
+
+    if(state == "Update"){
+
+        $('#save_vehicle').hide();
+        $('#update_vehicle').show();
+
+        $('#vehicle_id').attr('disabled',true);
+        $('#vehicle_license').attr('disabled',false);
+        $('#vehicle_fualType').attr('disabled',false);
+        $('#vehicle_status').attr('disabled',false);
+        $('#vehicle_remarks').attr('disabled',false);
+    }
+}

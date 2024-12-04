@@ -2751,14 +2751,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>License Plate Number</label>
-                                        <input type="text" class="form-control" placeholder="ABC 5024">
+                                        <input type="text" class="form-control" placeholder="ABC 5024" id="vehicle_license">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Fuel Type</label>
-                                        <select class="form-control form-control-lg">
+                                        <select class="form-control form-control-lg" id="vehicle_fualType">
                                             <option value="">Fuel Type</option>
                                             <option value="Petrol">Petrol</option>
                                             <option value="Diesel">Diesel</option>
@@ -2770,7 +2770,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Status</label>
-                                        <select class="form-control form-control-lg">
+                                        <select class="form-control form-control-lg" id="vehicle_status">
                                             <option value="">Status</option>
                                             <option value="AVAILABLE">AVAILABLE</option>
                                             <option value="UNAVAILABLE">UNAVAILABLE</option>
@@ -2781,7 +2781,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Remarks</label>
-                                        <input type="text" class="form-control" placeholder="No issues">
+                                        <input type="text" class="form-control" placeholder="No issues" id="vehicle_remarks">
                                     </div>
                                 </div>
 
@@ -2790,10 +2790,9 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary mr-2">Add
-                                        </button>
-                                        <button type="submit" class="btn btn-danger">Cancel
-                                        </button>
+                                        <button type="submit" class="btn btn-primary mr-2" id="save_vehicle">Add</button>
+                                        <button type="submit" class="btn btn-primary mr-2" id="update_vehicle">Update</button>
+                                        <button type="submit" class="btn btn-danger" id="cancle_vehicle">Cancel</button>
                                     </div>
                                 </div>
 
