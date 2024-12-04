@@ -208,3 +208,40 @@ function validateEquipment(vehicleData){
     }
     return true;
 }
+
+
+// ---------------------------------- View Equipment ---------------------------------------------
+
+
+$('#vehicle_table').on('click' ,'#view_vehicle' ,function(){
+
+    var vehicleId = $(this).closest('tr').find('td').first().text();
+    console.log(vehicleId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`vehicle/${vehicleId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(vehicle){
+ 
+            $('#vehicle_id').val(vehicle.vehicle_code);
+            $('#vehicle_license').val(vehicle.license_plate_number);
+            $('#vehicle_category').val(vehicle.vehicle_category);
+            $('#vehicle_fualType').val(vehicle.fuel_type);
+            $('#vehicle_status').val(vehicle.status);
+            $('#vehicle_remarks').val(vehicle.remarks);
+          
+            navigateToPage('#vehicle_registration');
+            activeNavBarButton('#vehicle_nav');
+            chageVehicleState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
