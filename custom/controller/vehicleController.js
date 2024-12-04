@@ -156,6 +156,7 @@ $('#save_vehicle').on('click' ,()=>{
             'Content-Type': 'application/json'
         },
         success:function(resualt){
+            clearVehicleFields();
             genarateNextVehicleId();
             loadVehicleTable();
             Swal.fire({
@@ -328,7 +329,7 @@ $('#update_vehicle').on('click' ,()=>{
 })
 
 
-// ---------------------------------- Delete Equipment ---------------------------------------------
+// ---------------------------------- Delete Vehicle ---------------------------------------------
 
 $('#vehicle_table').on('click' ,'#vehicle_delete' ,function(){
 
@@ -372,3 +373,13 @@ $('#vehicle_table').on('click' ,'#vehicle_delete' ,function(){
     });
 
 });
+
+
+function clearVehicleFields(){
+    $('#vehicle_id').val('');
+    $('#vehicle_license').val('');
+    $('#vehicle_category').val('');
+    $('#vehicle_fualType').val('Fuel Type').change();
+    $('#vehicle_status').val('Status').change();;
+    $('#vehicle_remarks').val('');
+}

@@ -75,6 +75,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#vehicle_section"){
+        clearVehicleFields();
         genarateNextVehicleId();
         loadVehicleTable();
     }
