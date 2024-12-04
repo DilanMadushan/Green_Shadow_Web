@@ -48,12 +48,13 @@ function callPageFunction(page) {
     }
 
     if(page == "#field_section"){
+        clearFieldFields();
         genarateNextFieldId();
         loadFieldTable();
-
     }
 
     if(page == "#log_section"){
+        clearLogFields();
         genarateNextLogId();
         loadLogTable();
         setCropIds();
@@ -65,6 +66,10 @@ function callPageFunction(page) {
         clearStaffFields();
         genarateNextStaffId();
         loadStaffTable();
+    }
+
+    if(page == "#equipment_section"){
+        genarateNextEquipmentId()
     }
 
 }
@@ -104,7 +109,6 @@ $('#field_nav').click(function (){
 })
 
 $('#add_Field').click(function (){
-    clearFieldFields();
     navigateToPage('#field_registerSection');
     activeNavBarButton('#field_nav');
     chageFieldState("Save");
@@ -116,7 +120,6 @@ $('#monitering-log_nav').click(function (){
 })
 
 $('#add_log').click(function (){
-    clearLogFields();
     navigateToPage('#log_registerSection');
     activeNavBarButton('#monitering-log_nav');
     changeLogState("Save");
