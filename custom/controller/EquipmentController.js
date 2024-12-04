@@ -366,3 +366,8 @@ function clearEquipmentFields(){
     $('#equipment_type').val('Status').change(),
     $('#equipment_status').val('Status').change()
 }
+
+$('#cancel_equipment').on('click' ,() => {
+    navigateToPage('#equipment_section');
+    activeNavBarButton('#equipment_nav');
+})
