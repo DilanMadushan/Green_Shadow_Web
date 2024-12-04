@@ -92,6 +92,7 @@ function chageVehicleState(state){
         $('#vehicle_id').attr('disabled',true);
         $('#vehicle_license').attr('disabled',false);
         $('#vehicle_fualType').attr('disabled',false);
+        $('#vehicle_category').attr('disabled',false);
         $('#vehicle_status').attr('disabled',false);
         $('#vehicle_remarks').attr('disabled',false);
 
@@ -105,6 +106,7 @@ function chageVehicleState(state){
         $('#vehicle_id').attr('disabled',true);
         $('#vehicle_license').attr('disabled',true);
         $('#vehicle_fualType').attr('disabled',true);
+        $('#vehicle_category').attr('disabled',true);
         $('#vehicle_status').attr('disabled',true);
         $('#vehicle_remarks').attr('disabled',true);
 
@@ -118,7 +120,91 @@ function chageVehicleState(state){
         $('#vehicle_id').attr('disabled',true);
         $('#vehicle_license').attr('disabled',false);
         $('#vehicle_fualType').attr('disabled',false);
+        $('#vehicle_category').attr('disabled',false);
         $('#vehicle_status').attr('disabled',false);
         $('#vehicle_remarks').attr('disabled',false);
     }
+}
+
+// ---------------------------------- Save Vehicle ---------------------------------------------
+
+$('#save_vehicle').on('click' ,()=>{
+    var vehicleData = {
+        vehicle_code: $('#vehicle_id').val(),
+        license_plate_number : $('#vehicle_license').val(),
+        vehicle_category : $('#vehicle_category').val(),
+        fuel_type : $('#vehicle_fualType').val(),
+        status : $('#vehicle_status').val(),
+        remarks : $('#vehicle_remarks').val()
+    }
+
+      console.log(vehicleData);
+
+      if(!validateEquipment(vehicleData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`vehicle`,
+        processData: false,
+        data:JSON.stringify(vehicleData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextVehicleId();
+            loadVehicleTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Save Vehicle successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+
+function validateEquipment(vehicleData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    
+
+    const requiredFields = [
+        {field: vehicleData.vehicle_code, message: "Vehicle Id is required"},
+        {field: vehicleData.license_plate_number, message: "License Plate Number is required"},
+        {field: vehicleData.vehicle_category, message: "Category is required"},
+        {field: vehicleData.fuel_type, message: "Fual Type is required"},
+        {field: vehicleData.status, message: "Status is required"},
+        {field: vehicleData.remarks, message: "Remarks is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
 }
