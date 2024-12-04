@@ -374,7 +374,6 @@ $('#vehicle_table').on('click' ,'#vehicle_delete' ,function(){
 
 });
 
-
 function clearVehicleFields(){
     $('#vehicle_id').val('');
     $('#vehicle_license').val('');
@@ -383,3 +382,9 @@ function clearVehicleFields(){
     $('#vehicle_status').val('Status').change();;
     $('#vehicle_remarks').val('');
 }
+
+
+$('#cancle_vehicle').on('click' ,()=>{
+    navigateToPage('#vehicle_section');
+    activeNavBarButton('#vehicle_nav');
+})
