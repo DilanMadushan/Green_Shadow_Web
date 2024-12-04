@@ -69,6 +69,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#equipment_section"){
+        clearEquipmentFields();
         genarateNextEquipmentId();
         loadEquipmentTable();
     }

@@ -147,6 +147,7 @@ $('#save_equipment').on('click' ,()=>{
             'Content-Type': 'application/json'
         },
         success:function(resualt){
+            clearEquipmentFields();
             genarateNextEquipmentId();
             loadEquipmentTable();
             Swal.fire({
@@ -357,3 +358,11 @@ $('#equipment_table').on('click' ,'#equipment_delete' ,function(){
     });
 
 });
+
+
+function clearEquipmentFields(){
+    $('#equipment_id').val(''),
+    $('#equipment_name').val(''),
+    $('#equipment_type').val('Status').change(),
+    $('#equipment_status').val('Status').change()
+}
