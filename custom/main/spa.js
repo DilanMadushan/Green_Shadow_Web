@@ -74,6 +74,11 @@ function callPageFunction(page) {
         loadEquipmentTable();
     }
 
+    if(page == "#vehicle_section"){
+        genarateNextVehicleId();
+        loadVehicleTable();
+    }
+
 }
 
 
