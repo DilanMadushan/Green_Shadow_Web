@@ -105,3 +105,57 @@ function chageVehicleReturnState(state){
     }
 
 }
+
+function setVehicleReturnStaffId(){
+
+    $('#vehicle_return_staff').append(`<option value="">Staff</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(staff => {
+                console.log(staff);
+                
+
+                $('#vehicle_return_staff').append(`<option value="${staff.staff_id}">${staff.staff_id}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+function setVehicleReturnVehicleId(){
+
+    $('#vehicle_return_vehicle').append(`<option value="">Vehicle</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`vehicle`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(vehicle => {
+                console.log(vehicle);
+                
+
+                $('#vehicle_return_vehicle').append(`<option value="${vehicle.vehicle_code}">${vehicle.vehicle_code}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
