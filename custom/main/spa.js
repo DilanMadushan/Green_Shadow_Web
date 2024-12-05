@@ -88,6 +88,13 @@ function callPageFunction(page) {
         setEquipmentId();
     }
 
+    if(page == "#equipment_return_section"){
+        genarateNextEquipmentReturnId();
+        loadEquipmentReturnTable();
+    }
+
+
+
 }
 
 

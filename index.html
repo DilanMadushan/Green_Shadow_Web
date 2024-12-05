@@ -2424,7 +2424,7 @@
                         <div class="col-md-2">
                             <div class="card text-primary mb-5 shadow-sm">
                                 <div class="card-body text-dark">
-                                    <h3>00</h3>
+                                    <h3 id="equipment_return_count">00</h3>
                                 </div>
                             </div>
                         </div>
@@ -2458,10 +2458,10 @@
                                 </div>
 
                                 <!-- Table -->
-                                <table class="table table-bordered table-hover">
+                                <table class="table table-bordered table-hover" id="equupment_Return_table">
                                     <thead class="bg-primary text-light">
                                     <tr>
-                                        <th>Reservation Id</th>
+                                        <th>Return Id</th>
                                         <th>Date</th>
                                         <th>Staff</th>
                                         <th>Field</th>
@@ -2470,7 +2470,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="py-1">
                                             <img src="../../images/faces/face1.jpg" alt="Crop Image"
                                                  class="img-thumbnail" style="width: 50px; height: 50px;">
@@ -2490,7 +2490,7 @@
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                     <!-- Repeat rows as needed -->
                                     </tbody>
                                 </table>
@@ -2547,7 +2547,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Reservation Id</label>
-                                        <input type="text" class="form-control" placeholder="EQ001">
+                                        <input type="text" class="form-control" placeholder="EQ001" id="equipment_return_id">
                                     </div>
                                 </div>
 
@@ -3264,6 +3264,7 @@
 <script src="custom/controller/EquipmentController.js"></script>
 <script src="custom/controller/vehicleController.js"></script>
 <script src="custom/controller/EquipmentResavation.js"></script>
+<script src="custom/controller/EquipmentReturn.js"></script>
 </body>
 
 </html>
