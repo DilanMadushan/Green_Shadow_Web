@@ -378,8 +378,8 @@ function clearVehicleFields(){
     $('#vehicle_id').val('');
     $('#vehicle_license').val('');
     $('#vehicle_category').val('');
-    $('#vehicle_fualType').val('Fuel Type').change();
-    $('#vehicle_status').val('Status').change();;
+    $('#vehicle_fualType').val('Fuel Type');
+    $('#vehicle_status').val('Status');
     $('#vehicle_remarks').val('');
 }
 

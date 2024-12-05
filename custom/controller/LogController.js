@@ -502,8 +502,8 @@ function clearLogFields(){
         
     $('#log_code').val('');
     $('#log_date').val('');
-    $('#log_crop_id').val('Crop').change();
-    $('#log_field_id').val('Field').change();
-    $('#log_staff_id').val('Staff').change();
+    $('#log_crop_id').val('Crop');
+    $('#log_field_id').val('Field');
+    $('#log_staff_id').val('Staff');
     $('#log_details').val('');
 }

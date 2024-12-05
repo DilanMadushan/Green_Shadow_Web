@@ -437,7 +437,7 @@ function clearCropFields(){
     $('#cropImg_previw').attr("src", "images/img.png");
     $('#cropbase64_input').val('');
     $('#crop_input').val("");
-    $('#crop_catagary').val('Category').change();
+    $('#crop_catagary').val('Category');
     $('#crop_Season').val("");
-    $('#crop_field_ids').val('Field').change();
+    $('#crop_field_ids').val('Field');
 }

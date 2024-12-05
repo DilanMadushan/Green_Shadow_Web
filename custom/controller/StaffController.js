@@ -449,7 +449,7 @@ function clearStaffFields(){
     $('#staff_first_name').val('');
     $('#staff_last_name').val('');
     $('#staff_dob').val('');
-    $('#staff_gender').val('Gender').change();
+    $('#staff_gender').val('Gender');
     $('#staff_joind_date').val('');
     $('#staff_address1').val('');
     $('#staff_address2').val('');
@@ -458,5 +458,5 @@ function clearStaffFields(){
     $('#staff_address5').val('');
     $('#staff_mobile').val('');
     $('#staff_email').val('');
-    $('#staff_role').val('Role').change();
+    $('#staff_role').val('Role');
 }

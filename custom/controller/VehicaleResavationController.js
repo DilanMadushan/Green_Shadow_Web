@@ -301,8 +301,8 @@ $('#cancel_Vehicle_resavation').on('click' ,()=>{
 function clearVehicalResavationFields(){
     $('#vehicle_Resavation_id').val('');
     $('#vehicle_Resavation_date').val('');
-    $('#vehicle_Resavation_staff').val('Staff').change();;
-    $('#vehicle_Resavation_vehicle').val('Vehicle').change();;
+    $('#vehicle_Resavation_staff').val('Staff');
+    $('#vehicle_Resavation_vehicle').val('Vehicle');
     $('#vehicle_Resavation_plaate_no').val('');
     $('#vehicle_Resavation_resone').val('');
 

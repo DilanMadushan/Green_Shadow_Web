@@ -363,8 +363,8 @@ $('#equipment_table').on('click' ,'#equipment_delete' ,function(){
 function clearEquipmentFields(){
     $('#equipment_id').val(''),
     $('#equipment_name').val(''),
-    $('#equipment_type').val('Status').change(),
-    $('#equipment_status').val('Status').change()
+    $('#equipment_type').val('Status'),
+    $('#equipment_status').val('Status')
 }
 
 $('#cancel_equipment').on('click' ,() => {
