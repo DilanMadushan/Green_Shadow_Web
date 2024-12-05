@@ -74,3 +74,33 @@ function loadEquipmentReturnTable(){
         }
     }
 }
+
+
+function chageEquipmentReturnState(state){
+
+    if(state == "Save"){
+
+        $('#save_equipment_return').show();
+
+        $('#equipment_return_id').attr('disabled',true);
+        $('#equipment_return_date').attr('disabled',false);
+        $('#equipment_return_staff').attr('disabled',false);
+        $('#equipment_return_field').attr('disabled',false);
+        $('#equipment_return_equipment').attr('disabled',false);
+        $('#equipment_return_resone').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_equipment_return').show();
+
+        $('#equipment_return_id').attr('disabled',true);
+        $('#equipment_return_date').attr('disabled',true);
+        $('#equipment_return_staff').attr('disabled',true);
+        $('#equipment_return_field').attr('disabled',true);
+        $('#equipment_return_equipment').attr('disabled',true);
+        $('#equipment_return_resone').attr('disabled',true);
+    }
+
+}

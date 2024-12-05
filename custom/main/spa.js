@@ -190,6 +190,7 @@ $('#return_equipment').click(function (){
 $('#add_equipment_return').click(function (){
     navigateToPage('#equipment_return_section_registration');
     activeNavBarButton('#equipment_nav');
+    chageEquipmentReturnState("Save");
 })
 
 $('#vehicle_nav').click(function (){
