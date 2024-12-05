@@ -92,7 +92,7 @@ function chageEquipmentResavationState(state){
 
     if(state == "View"){
 
-        $('#save_equipment_resavtion').show();
+        $('#save_equipment_resavtion').hide();
 
         $('#equipment_resavation_id').attr('disabled',true);
         $('#equipment_resavation_date').attr('disabled',true);
@@ -221,3 +221,97 @@ $('#equipment_resavation_table').on('click' ,'#view_equipmentResavation' ,functi
     })
 
 })
+
+
+// ---------------------------------- Save Equipment ---------------------------------------------
+
+$('#save_equipment_resavtion').on('click' ,()=>{
+    var equipmentData = {
+        detailId: $('#equipment_resavation_id').val(),
+        date: $('#equipment_resavation_date').val(),
+        resone: $('#equipment_resavation_resone').val(),
+        resavationType: "PICKUP",
+        staff_id: $('#equipment_resavation_staff').val(),
+        field_code: $('#equipment_resavation_field').val(),
+        equipment_Id: $('#equipment_resavation_equipment').val()
+    }
+
+      console.log(equipmentData);
+
+      if(!validateEquipmentResavation(equipmentData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`equipmentDetails`,
+        processData: false,
+        data:JSON.stringify(equipmentData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextEquipmentResavationId();
+            loadEquipmentResavationTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Resavation successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+function validateEquipmentResavation(equipmentData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+
+    var equipmentData = {
+        detailId: $('#equipment_resavation_id').val(),
+        date: $('#equipment_resavation_date').val(),
+        resone: $('#equipment_resavation_resone').val(),
+        resavationType: "PICKUP",
+        staff_id: $('#equipment_resavation_staff').val(),
+        field_code: $('#equipment_resavation_field').val(),
+        equipment_Id: $('#equipment_resavation_equipment').val()
+    }
+
+    const requiredFields = [
+        {field: equipmentData.detailId, message: "Resavation Id is required"},
+        {field: equipmentData.date, message: "Date is required"},
+        {field: equipmentData.resone, message: "Resone is required"},
+        {field: equipmentData.resavationType, message: "Type is required"},
+        {field: equipmentData.staff_id, message: "Satff is required"},
+        {field: equipmentData.field_code, message: "Field is required"},
+        {field: equipmentData.equipment_Id, message: "Equipment is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}
