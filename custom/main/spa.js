@@ -110,7 +110,6 @@ function callPageFunction(page) {
         setVehicleReturnVehicleId();
     }
 
-
 }
 
 

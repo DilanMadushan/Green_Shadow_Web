@@ -48,7 +48,7 @@ function loadVehicleReturnTable(){
                                         <td>${vehicle.vehicle_code}</td>
                                         <td>${vehicle.license_plate_number}</td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm" title="View" id="view_vehicle_resavation">
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_vehicle_return">
                                                 <i class="fa fa-eye"></i>
                                             </button>
                                         </td>
@@ -159,3 +159,41 @@ function setVehicleReturnVehicleId(){
     })
 
 }
+
+// ---------------------------------- View Vehicle Return ---------------------------------------------
+
+
+$('#vehicle_return_table').on('click' ,'#view_vehicle_return' ,function(){
+
+    var vehicleResavationId = $(this).closest('tr').find('td').first().text();
+    console.log(vehicleResavationId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`resavation?data=${vehicleResavationId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(vehicle =>{
+                $('#vehicle_return_id').val(vehicle.resavationId);
+                $('#vehicle_return_date').val(vehicle.date);
+                $('#vehicle_return_staff').val(vehicle.staff_id);
+                $('#vehicle_return_vehicle').val(vehicle.vehicle_code);
+                $('#vehicle_return_plane_no').val(vehicle.license_plate_number);
+                $('#vehicle_return_resone').val(vehicle.resone);
+            })
+            
+            navigateToPage('#vehicle_return_registration');
+            activeNavBarButton('#vehicle_nav');
+            chageVehicleReturnState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
