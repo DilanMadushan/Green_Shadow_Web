@@ -217,3 +217,87 @@ $('#equupment_Return_table').on('click' ,'#view_equipmentReturn' ,function(){
     });
 
 })
+
+
+
+// ---------------------------------- Save Equipment Return  ---------------------------------------------
+
+$('#save_equipment_return').on('click' ,()=>{
+    var equipmentData = {
+        detailId: $('#equipment_return_id').val(),
+        date: $('#equipment_return_date').val(),
+        resone: $('#equipment_return_resone').val(),
+        resavationType: "RETURN",
+        staff_id: $('#equipment_return_staff').val(),
+        field_code:  $('#equipment_return_field').val(),
+        equipment_Id:$('#equipment_return_equipment').val()
+    }
+
+      console.log(equipmentData);
+
+      if(!validateEquipmentReturn(equipmentData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`equipmentDetails`,
+        processData: false,
+        data:JSON.stringify(equipmentData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextEquipmentReturnId();
+            loadEquipmentReturnTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Return successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+function validateEquipmentReturn(equipmentData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+    const requiredFields = [
+        {field: equipmentData.detailId, message: "Retuern Id is required"},
+        {field: equipmentData.date, message: "Date is required"},
+        {field: equipmentData.resone, message: "Resone is required"},
+        {field: equipmentData.resavationType, message: "Type is required"},
+        {field: equipmentData.staff_id, message: "Satff is required"},
+        {field: equipmentData.field_code, message: "Field is required"},
+        {field: equipmentData.equipment_Id, message: "Equipment is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}
