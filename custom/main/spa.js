@@ -80,6 +80,10 @@ function callPageFunction(page) {
         loadVehicleTable();
     }
 
+    if(page == "#equipment_reservation_section"){
+        genarateNextEquipmentResavationId();
+    }
+
 }
 
 
