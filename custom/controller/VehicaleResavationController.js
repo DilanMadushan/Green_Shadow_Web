@@ -74,3 +74,33 @@ function loadVehicleResavationTable(){
         }
     }
 }
+
+function chageVehicleResavationState(state){
+
+    if(state == "Save"){
+
+        $('#save_Vehicle_resavation').show();
+
+        $('#vehicle_Resavation_id').attr('disabled',true);
+        $('#vehicle_Resavation_date').attr('disabled',false);
+        $('#vehicle_Resavation_staff').attr('disabled',false);
+        $('#vehicle_Resavation_vehicle').attr('disabled',false);
+        $('#vehicle_Resavation_plaate_no').attr('disabled',false);
+        $('#vehicle_Resavation_resone').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_Vehicle_resavation').hide();
+
+        $('#vehicle_Resavation_id').attr('disabled',true);
+        $('#vehicle_Resavation_date').attr('disabled',true);
+        $('#vehicle_Resavation_staff').attr('disabled',true);
+        $('#vehicle_Resavation_vehicle').attr('disabled',true);
+        $('#vehicle_Resavation_plaate_no').attr('disabled',true);
+        $('#vehicle_Resavation_resone').attr('disabled',true);
+
+    }
+
+}

@@ -219,6 +219,7 @@ $('#borrow_vehicle').click(function (){
 $('#add_vehicle_resevetion').click(function (){
     navigateToPage('#vehicle_resevation_registration');
     activeNavBarButton('#vehicle_nav');
+    chageVehicleResavationState("Save");
 })
 
 $('#return_vehicle').click(function (){
