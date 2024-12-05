@@ -292,3 +292,7 @@ function validateVehicleResavation(vehicleData){
     return true;
 }
 
+$('#cancel_Vehicle_resavation').on('click' ,()=>{
+    navigateToPage('#vehicle_resevation_section');
+    activeNavBarButton('#vehicle_nav');
+})
