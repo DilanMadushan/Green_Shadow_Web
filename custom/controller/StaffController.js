@@ -460,3 +460,49 @@ function clearStaffFields(){
     $('#staff_email').val('');
     $('#staff_role').val('Role');
 }
+
+$('#staff_sort').on('input', ()=>{
+    var data = $('#staff_sort').val();
+
+    $('#staff_table tbody').empty();
+
+    $.ajax({
+        method: "GET",
+        url: baseUrl+`staff?data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        success: function(resualt){
+    
+            resualt.forEach(function(staff){
+
+                $('#staff_table tbody').append(`<tr>
+                                        <td>${staff.staff_id}</td>
+                                        <td>${staff.first_name}</td>
+                                        <td>${staff.joinedDate.split("T")[0]}</td>
+                                        <td>${staff.role}</td>
+                                        <td>${staff.address_line_1}</td>
+                                        <td>${staff.tel}</td>
+                                        <td>${staff.email}</td>
+                                        
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="staff_view">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" title="Update" id="staff_update">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="staff_delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`)
+            })
+            setStaffCount();
+
+        },error:function(resualt){
+            console.log(resualt)
+        }
+    })
+
+})

@@ -32,7 +32,7 @@ function loadEquipmentResavationTable(){
 
     $.ajax({
         method:"GET",
-        url:baseUrl+`equipmentDetails?data=PICKUP`,
+        url:baseUrl+`equipmentDetails?type=PICKUP`,
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -320,3 +320,4 @@ function clearEquipmentResavationFields(){
     $('#equipment_resavation_field').val("");
     $('#equipment_resavation_equipment').val("");
 }
+

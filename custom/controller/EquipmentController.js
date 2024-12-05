@@ -371,3 +371,46 @@ $('#cancel_equipment').on('click' ,() => {
     navigateToPage('#equipment_section');
     activeNavBarButton('#equipment_nav');
 })
+
+$('#equipment_sort').on('input' ,() => {
+    var data = $('#equipment_sort').val();
+
+    $('#equipment_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipment?data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment => {
+
+                $('#equipment_table tbody').append(`<tr>
+                                        
+                                        <td>${equipment.equipment_Id}</td>
+                                        <td>${equipment.name}</td>
+                                        <td>${equipment.type}</td>
+                                        <td>${equipment.status}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_equipment">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" title="Update" id="equipment_update">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="equipment_delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+    
+})
