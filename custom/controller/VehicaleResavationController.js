@@ -308,3 +308,38 @@ function clearVehicalResavationFields(){
 
 }
 
+$('#vehicle_resavation_sort').on('input' ,() => {
+    var data = $('#vehicle_resavation_sort').val();
+
+    $('#vehicle_Resavation_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`resavation?=&type=PICKUP&data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(vehicle => {
+
+                $('#vehicle_Resavation_table tbody').append(`<tr>
+                                        
+                                        <td>${vehicle.resavationId}</td>
+                                        <td>${vehicle.date}</td>
+                                        <td>${vehicle.staff_id}</td>
+                                        <td>${vehicle.vehicle_code}</td>
+                                        <td>${vehicle.license_plate_number}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_vehicle_resavation">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+})
