@@ -285,16 +285,6 @@ function validateEquipmentResavation(equipmentData){
     };
 
 
-    var equipmentData = {
-        detailId: $('#equipment_resavation_id').val(),
-        date: $('#equipment_resavation_date').val(),
-        resone: $('#equipment_resavation_resone').val(),
-        resavationType: "PICKUP",
-        staff_id: $('#equipment_resavation_staff').val(),
-        field_code: $('#equipment_resavation_field').val(),
-        equipment_Id: $('#equipment_resavation_equipment').val()
-    }
-
     const requiredFields = [
         {field: equipmentData.detailId, message: "Resavation Id is required"},
         {field: equipmentData.date, message: "Date is required"},

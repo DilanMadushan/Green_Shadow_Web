@@ -179,7 +179,7 @@ $('#vehicle_Resavation_table').on('click' ,'#view_vehicle_resavation' ,function(
         },success:function(resualt){
 
             resualt.forEach(vehicle =>{
-                $('#vehicle_Resavation_id').val(vehicle.resavationId),
+                $('#vehicle_Resavation_id').val(vehicle.resavationId);
                 $('#vehicle_Resavation_date').val(vehicle.date);
                 $('#vehicle_Resavation_staff').val(vehicle.staff_id);
                 $('#vehicle_Resavation_vehicle').val(vehicle.vehicle_code);
@@ -198,3 +198,97 @@ $('#vehicle_Resavation_table').on('click' ,'#view_vehicle_resavation' ,function(
     })
 
 })
+
+// ---------------------------------- Save Resavation ---------------------------------------------
+
+$('#save_Vehicle_resavation').on('click' ,()=>{
+    var vehicleData = {
+        resavationId: $('#vehicle_Resavation_id').val(),
+        date:  $('#vehicle_Resavation_date').val(),
+        resone: $('#vehicle_Resavation_resone').val(),
+        type: "PICKUP",
+        staff_id:  $('#vehicle_Resavation_staff').val(),
+        vehicle_code: $('#vehicle_Resavation_vehicle').val(),
+        license_plate_number: $('#vehicle_Resavation_plaate_no').val()
+    }
+
+      console.log(vehicleData);
+
+      if(!validateVehicleResavation(vehicleData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`resavation`,
+        processData: false,
+        data:JSON.stringify(vehicleData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextVehicleResavation();
+            loadVehicleResavationTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Resavation successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+function validateVehicleResavation(vehicleData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+
+    var vehicleData = {
+        resavationId: $('#vehicle_Resavation_id').val(),
+        date:  $('#vehicle_Resavation_date').val(),
+        resone: $('#vehicle_Resavation_resone').val(),
+        type: "PICKUP",
+        staff_id:  $('#vehicle_Resavation_staff').val(),
+        vehicle_code: $('#vehicle_Resavation_vehicle').val(),
+        license_plate_number: $('#vehicle_Resavation_plaate_no').val()
+    }
+
+    const requiredFields = [
+        {field: vehicleData.resavationId, message: "Resavation Id is required"},
+        {field: vehicleData.date, message: "Date is required"},
+        {field: vehicleData.resone, message: "Resone is required"},
+        {field: vehicleData.type, message: "Type is required"},
+        {field: vehicleData.staff_id, message: "Satff is required"},
+        {field: vehicleData.vehicle_code, message: "Vehicle is required"},
+        {field: vehicleData.license_plate_number, message: "License Plate Number is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}
+
