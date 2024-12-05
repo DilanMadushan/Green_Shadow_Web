@@ -159,3 +159,42 @@ function setVehicleResavationVehicleId(){
     })
 
 }
+
+
+// ---------------------------------- View Vehicle Resavation ---------------------------------------------
+
+
+$('#vehicle_Resavation_table').on('click' ,'#view_vehicle_resavation' ,function(){
+
+    var vehicleResavationId = $(this).closest('tr').find('td').first().text();
+    console.log(vehicleResavationId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`resavation?data=${vehicleResavationId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(vehicle =>{
+                $('#vehicle_Resavation_id').val(vehicle.resavationId),
+                $('#vehicle_Resavation_date').val(vehicle.date);
+                $('#vehicle_Resavation_staff').val(vehicle.staff_id);
+                $('#vehicle_Resavation_vehicle').val(vehicle.vehicle_code);
+                $('#vehicle_Resavation_plaate_no').val(vehicle.license_plate_number);
+                $('#vehicle_Resavation_resone').val(vehicle.resone);
+            })
+            
+            navigateToPage('#vehicle_resevation_registration');
+            activeNavBarButton('#vehicle_nav');
+            chageVehicleResavationState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
