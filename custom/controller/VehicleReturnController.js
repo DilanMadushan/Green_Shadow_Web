@@ -281,3 +281,9 @@ function validateVehicleReturn(vehicleData){
     }
     return true;
 }
+
+
+$('#cancel_vehicle_return').on('click' ,()=>{
+    navigateToPage('#vehicle_return_section');
+    activeNavBarButton('#vehicle_nav');
+})
