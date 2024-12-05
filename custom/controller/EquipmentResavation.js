@@ -321,3 +321,39 @@ function clearEquipmentResavationFields(){
     $('#equipment_resavation_equipment').val("");
 }
 
+$('#equipment_resavtion_sort').on('input' ,()=>{
+    var data = $('#equipment_resavtion_sort').val();
+
+    $('#equipment_resavation_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipmentDetails?type=PICKUP&data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment => {
+
+                $('#equipment_resavation_table tbody').append(`<tr>
+                                        
+                                        <td>${equipment.detailId}</td>
+                                        <td>${equipment.date}</td>
+                                        <td>${equipment.staff_id}</td>
+                                        <td>${equipment.field_code}</td>
+                                        <td>${equipment.equipment_Id}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_equipmentResavation">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+})
