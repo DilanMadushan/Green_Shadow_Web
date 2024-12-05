@@ -105,6 +105,7 @@ function callPageFunction(page) {
 
     if(page == "#vehicle_return_section"){
         genarateNextVehicleReturn();
+        loadVehicleReturnTable();
     }
 
 
