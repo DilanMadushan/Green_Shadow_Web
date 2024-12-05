@@ -103,6 +103,10 @@ function callPageFunction(page) {
         setVehicleResavationVehicleId();
     }
 
+    if(page == "#vehicle_return_section"){
+        genarateNextVehicleReturn();
+    }
+
 
 }
 
