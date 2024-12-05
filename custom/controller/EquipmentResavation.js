@@ -315,3 +315,8 @@ function validateEquipmentResavation(equipmentData){
     }
     return true;
 }
+
+$('#cancel_equipment_resavtion').on('click' ,function(){
+    navigateToPage('#equipment_reservation_section');
+    activeNavBarButton('#equipment_nav');
+})
