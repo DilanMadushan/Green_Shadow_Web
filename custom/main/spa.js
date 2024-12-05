@@ -169,6 +169,7 @@ $('#borrow_equipemnt').click(function (){
 $('#add_equipment_resavation').click(function (){
     navigateToPage('#equipment_reservation_registration');
     activeNavBarButton('#equipment_nav');
+    chageEquipmentResavationState("Save");
 })
 
 $('#return_equipment').click(function (){

@@ -74,3 +74,33 @@ function loadEquipmentResavationTable(){
         }
     }
 }
+
+function chageEquipmentResavationState(state){
+
+    if(state == "Save"){
+
+        $('#save_equipment_resavtion').show();
+
+        $('#equipment_resavation_id').attr('disabled',true);
+        $('#equipment_resavation_date').attr('disabled',false);
+        $('#equipment_resavation_staff').attr('disabled',false);
+        $('#equipment_resavation_field').attr('disabled',false);
+        $('#equipment_resavation_equipment').attr('disabled',false);
+        $('#equipment_resavation_resone').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_equipment_resavtion').show();
+
+        $('#equipment_resavation_id').attr('disabled',true);
+        $('#equipment_resavation_date').attr('disabled',false);
+        $('#equipment_resavation_staff').attr('disabled',false);
+        $('#equipment_resavation_field').attr('disabled',false);
+        $('#equipment_resavation_equipment').attr('disabled',false);
+        $('#equipment_resavation_resone').attr('disabled',false);
+
+    }
+
+}
