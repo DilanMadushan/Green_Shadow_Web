@@ -104,3 +104,81 @@ function chageEquipmentReturnState(state){
     }
 
 }
+
+function setEquipmentReturnFieldId(){
+
+    $('#equipment_return_field').append(`<option value="">Field</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(field => {
+
+                $('#equipment_return_field').append(`<option value="${field.field_code}">${field.field_code}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+function setEquipmentReturnId(){
+
+    $('#equipment_return_equipment').append(`<option value="">Equipment</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipment`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment => {
+
+                $('#equipment_return_equipment').append(`<option value="${equipment.equipment_Id}">${equipment.equipment_Id}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+
+function setEquipmentReturnStaffId(){
+
+    $('#equipment_return_staff').append(`<option value="">Staff</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(staff => {
+                console.log(staff);
+                
+
+                $('#equipment_return_staff').append(`<option value="${staff.staff_id}">${staff.staff_id}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}

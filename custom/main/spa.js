@@ -91,6 +91,9 @@ function callPageFunction(page) {
     if(page == "#equipment_return_section"){
         genarateNextEquipmentReturnId();
         loadEquipmentReturnTable();
+        setEquipmentReturnFieldId();
+        setEquipmentReturnStaffId();
+        setEquipmentReturnId();
     }
 
 
