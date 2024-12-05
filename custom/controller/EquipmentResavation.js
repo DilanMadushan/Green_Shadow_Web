@@ -254,6 +254,7 @@ $('#save_equipment_resavtion').on('click' ,()=>{
             'Content-Type': 'application/json'
         },
         success:function(resualt){
+            clearEquipmentResavationFields();
             genarateNextEquipmentResavationId();
             loadEquipmentResavationTable();
             Swal.fire({
@@ -310,3 +311,12 @@ $('#cancel_equipment_resavtion').on('click' ,function(){
     navigateToPage('#equipment_reservation_section');
     activeNavBarButton('#equipment_nav');
 })
+
+function clearEquipmentResavationFields(){
+    $('#equipment_resavation_id').val("");
+    $('#equipment_resavation_date').val("");
+    $('#equipment_resavation_resone').val("");
+    $('#equipment_resavation_staff').val("");
+    $('#equipment_resavation_field').val("");
+    $('#equipment_resavation_equipment').val("");
+}

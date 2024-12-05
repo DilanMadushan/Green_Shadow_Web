@@ -81,6 +81,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#equipment_reservation_section"){
+        clearEquipmentResavationFields();
         genarateNextEquipmentResavationId();
         loadEquipmentResavationTable();
         setEquipmentResavationFieldId();
