@@ -96,6 +96,9 @@ function callPageFunction(page) {
         setEquipmentReturnId();
     }
 
+    if(page == "#vehicle_resevation_section"){
+        genarateNextVehicleResavation()
+    }
 
 
 }
