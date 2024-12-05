@@ -251,6 +251,7 @@ $('#save_equipment_return').on('click' ,()=>{
             'Content-Type': 'application/json'
         },
         success:function(resualt){
+            clearEquipmentReturnFields();
             genarateNextEquipmentReturnId();
             loadEquipmentReturnTable();
             Swal.fire({
@@ -307,3 +308,13 @@ $('#cancel_equipment_return').on('click' ,function(){
     navigateToPage('#equipment_return_section');
     activeNavBarButton('#equipment_nav');
 })
+
+
+function clearEquipmentReturnFields(){
+    $('#equipment_return_id').val('');
+    $('#equipment_return_date').val('');
+    $('#equipment_return_resone').val('');
+    $('#equipment_return_staff').val('');
+    $('#equipment_return_field').val('');
+    $('#equipment_return_equipment').val('');
+}

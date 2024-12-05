@@ -89,6 +89,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#equipment_return_section"){
+        clearEquipmentReturnFields();
         genarateNextEquipmentReturnId();
         loadEquipmentReturnTable();
         setEquipmentReturnFieldId();
@@ -97,6 +98,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#vehicle_resevation_section"){
+        clearVehicalResavationFields();
         genarateNextVehicleResavation();
         loadVehicleResavationTable();
         setVehicleResavationStaffId();

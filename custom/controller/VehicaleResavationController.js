@@ -232,6 +232,7 @@ $('#save_Vehicle_resavation').on('click' ,()=>{
         success:function(resualt){
             genarateNextVehicleResavation();
             loadVehicleResavationTable();
+            clearVehicalResavationFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -297,3 +298,12 @@ $('#cancel_Vehicle_resavation').on('click' ,()=>{
     activeNavBarButton('#vehicle_nav');
 })
 
+function clearVehicalResavationFields(){
+    $('#vehicle_Resavation_id').val('');
+    $('#vehicle_Resavation_date').val('');
+    $('#vehicle_Resavation_staff').val('Staff').change();;
+    $('#vehicle_Resavation_vehicle').val('Vehicle').change();;
+    $('#vehicle_Resavation_plaate_no').val('');
+    $('#vehicle_Resavation_resone').val('');
+
+}
