@@ -197,3 +197,87 @@ $('#vehicle_return_table').on('click' ,'#view_vehicle_return' ,function(){
     })
 
 })
+
+// ---------------------------------- Save Return ---------------------------------------------
+
+$('#save_vehicle_return').on('click' ,()=>{
+
+    var vehicleData = {
+        resavationId: $('#vehicle_return_id').val(),
+        date:  $('#vehicle_return_date').val(),
+        resone: $('#vehicle_return_resone').val(),
+        type: "RETURN",
+        staff_id:  $('#vehicle_return_staff').val(),
+        vehicle_code: $('#vehicle_return_vehicle').val(),
+        license_plate_number: $('#vehicle_return_plane_no').val()
+    }
+
+      console.log(vehicleData);
+
+      if(!validateVehicleReturn(vehicleData)){
+        return
+      }
+      
+
+      $.ajax({
+        method:"POST",
+        url:baseUrl+`resavation`,
+        processData: false,
+        data:JSON.stringify(vehicleData),
+        processData:false,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success:function(resualt){
+            genarateNextVehicleReturn();
+            loadVehicleReturnTable();
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Return successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        },error:function(result){
+            console.log(result);
+
+        }
+      })
+      
+})
+
+function validateVehicleReturn(vehicleData){
+
+    const showError = (message) => {
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: message,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    };
+
+
+    const requiredFields = [
+        {field: vehicleData.resavationId, message: "Resavation Id is required"},
+        {field: vehicleData.date, message: "Date is required"},
+        {field: vehicleData.resone, message: "Resone is required"},
+        {field: vehicleData.type, message: "Type is required"},
+        {field: vehicleData.staff_id, message: "Satff is required"},
+        {field: vehicleData.vehicle_code, message: "Vehicle is required"},
+        {field: vehicleData.license_plate_number, message: "License Plate Number is required"},
+        
+        
+    ];
+
+    for(let i = 0; i < requiredFields.length; i++){
+        if(requiredFields[i].field === ""){
+            showError(requiredFields[i].message);
+            return false;
+        }
+    }
+    return true;
+}
