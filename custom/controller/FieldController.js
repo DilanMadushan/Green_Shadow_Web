@@ -401,3 +401,47 @@ function clearFieldFields(){
     $("#fieldImg2_previw").attr("src", "images/img.png")
 
 }
+
+$('#field_sort').on('input' ,()=>{
+
+    var data = $('#field_sort').val();
+
+    $('#field_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field?data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(field => {
+
+                $('#field_table tbody').append(`<tr>
+                                        
+                                        <td>${field.field_code}</td>
+                                        <td>${field.field_Name}</td>
+                                        <td>${field.field_location}</td>
+                                        <td>${field.extent_size_of_field}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_Field">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" title="Update" id="field_update">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="field_delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+})
