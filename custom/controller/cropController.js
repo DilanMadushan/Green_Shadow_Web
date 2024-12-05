@@ -441,3 +441,47 @@ function clearCropFields(){
     $('#crop_Season').val("");
     $('#crop_field_ids').val('Field');
 }
+
+$('#crop_sort').on('input' , function(){
+    var data = $('#crop_sort').val();
+
+    $('#crop_table tbody').empty();
+
+    $.ajax({
+        method: "GET",
+        url: baseUrl+`crop?data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        success: function(resualt){
+            
+            console.log(resualt);
+            $('#crop_table tbody').empty()
+
+            resualt.forEach(function(crop){
+                $('#crop_table tbody').append(`<tr>
+                                        <td class="font-weight-bolder">${crop.crop_code}</td>
+                                        <td>${crop.common_name}</td>
+                                        <td>${crop.category}</td>
+                                        <td>${crop.crop_season}</td>
+                                        <td>${crop.field_code}</td>
+                                        
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="crop_view">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-primary btn-sm" title="Update" id="crop_update">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Delete" id="crop_delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`)
+            })
+
+        },error:function(resualt){
+            console.log(resualt)
+        }
+    })
+})
