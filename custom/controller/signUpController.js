@@ -1,15 +1,17 @@
-$("#login_button").on('click' , function (){
-    var email = $('#login_email').val();
-    var password = $('#login_password').val();
+$('#signup-button').on('click' ,()=>{
+    var email = $('#siginup_email').val();
+    var password = $('#siginup_password').val();
+    var role = $('#siginup_role').val();
 
     const formData ={
         email:email,
-        password:password
+        password:password,
+        role:role
     }
 
-    var url = "http://localhost:8080/GreenShadow/api/v1/auth/signIn";
+    var url = "http://localhost:8080/GreenShadow/api/v1/auth/signUp";
 
-    if(validate(email,password)){
+    if(validate(email,password,role)){
         $.ajax({
             method:"POST",
             url:url,
@@ -33,12 +35,12 @@ $("#login_button").on('click' , function (){
         })
     }
 
-    function validate(email, password) {
-        if(email == "" || password == ""){
+    function validate(email, password,role) {
+        if(email == "" || password == "" || role == ""){
             Swal.fire({
                 position: "top-end",
                 icon: "error",
-                title: "email name and password required",
+                title: "email name and password required and Role",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -46,8 +48,4 @@ $("#login_button").on('click' , function (){
         }
         return true;
     }
-})
-
-$('#sign_up_login').on('click' ,() =>{
-    document.location.href = "register.html";
 })
