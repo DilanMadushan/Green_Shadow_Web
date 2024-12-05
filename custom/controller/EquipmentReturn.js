@@ -32,7 +32,7 @@ function loadEquipmentReturnTable(){
 
     $.ajax({
         method:"GET",
-        url:baseUrl+`equipmentDetails?data=RETURN`,
+        url:baseUrl+`equipmentDetails?type=RETURN`,
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -318,3 +318,41 @@ function clearEquipmentReturnFields(){
     $('#equipment_return_field').val('');
     $('#equipment_return_equipment').val('');
 }
+
+
+$('#equipment_return_sort').on('input' ,() => {
+    var data = $('#equipment_return_sort').val();
+
+    $('#equupment_Return_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipmentDetails?type=RETURN&data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment => {
+
+                $('#equupment_Return_table tbody').append(`<tr>
+                                        
+                                        <td>${equipment.detailId}</td>
+                                        <td>${equipment.date}</td>
+                                        <td>${equipment.staff_id}</td>
+                                        <td>${equipment.field_code}</td>
+                                        <td>${equipment.equipment_Id}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_equipmentReturn">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+})
