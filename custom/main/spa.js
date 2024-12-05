@@ -104,6 +104,7 @@ function callPageFunction(page) {
     }
 
     if(page == "#vehicle_return_section"){
+        clearVehicleReturnFields();
         genarateNextVehicleReturn();
         loadVehicleReturnTable();
         setVehicleReturnStaffId();

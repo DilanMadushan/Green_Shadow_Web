@@ -232,6 +232,7 @@ $('#save_vehicle_return').on('click' ,()=>{
         success:function(resualt){
             genarateNextVehicleReturn();
             loadVehicleReturnTable();
+            clearVehicleReturnFields();
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -287,3 +288,12 @@ $('#cancel_vehicle_return').on('click' ,()=>{
     navigateToPage('#vehicle_return_section');
     activeNavBarButton('#vehicle_nav');
 })
+
+function clearVehicleReturnFields(){
+    $('#vehicle_return_id').val('');
+    $('#vehicle_return_date').val('');
+    $('#vehicle_return_staff').val('Staff').change();
+    $('#vehicle_return_vehicle').val('Vehicle').change();
+    $('#vehicle_return_plane_no').val('');
+    $('#vehicle_return_resone').val('');
+}
