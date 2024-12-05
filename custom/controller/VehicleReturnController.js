@@ -297,3 +297,40 @@ function clearVehicleReturnFields(){
     $('#vehicle_return_plane_no').val('');
     $('#vehicle_return_resone').val('');
 }
+
+$('#vehicle_return_sort').on('input' ,() => {
+    var data = $('#vehicle_return_sort').val();
+
+    $('#vehicle_return_table tbody').empty();
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`resavation?=&type=RETURN&data=${data}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(vehicle => {
+
+                $('#vehicle_return_table tbody').append(`<tr>
+                                        
+                                        <td>${vehicle.resavationId}</td>
+                                        <td>${vehicle.date}</td>
+                                        <td>${vehicle.staff_id}</td>
+                                        <td>${vehicle.vehicle_code}</td>
+                                        <td>${vehicle.license_plate_number}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="View" id="view_vehicle_return">
+                                                <i class="fa fa-eye"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+})
