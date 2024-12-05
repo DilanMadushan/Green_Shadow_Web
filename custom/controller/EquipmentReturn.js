@@ -93,7 +93,7 @@ function chageEquipmentReturnState(state){
 
     if(state == "View"){
 
-        $('#save_equipment_return').show();
+        $('#save_equipment_return').hide();
 
         $('#equipment_return_id').attr('disabled',true);
         $('#equipment_return_date').attr('disabled',true);
@@ -301,3 +301,9 @@ function validateEquipmentReturn(equipmentData){
     }
     return true;
 }
+
+
+$('#cancel_equipment_return').on('click' ,function(){
+    navigateToPage('#equipment_return_section');
+    activeNavBarButton('#equipment_nav');
+})
