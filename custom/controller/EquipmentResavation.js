@@ -95,12 +95,129 @@ function chageEquipmentResavationState(state){
         $('#save_equipment_resavtion').show();
 
         $('#equipment_resavation_id').attr('disabled',true);
-        $('#equipment_resavation_date').attr('disabled',false);
-        $('#equipment_resavation_staff').attr('disabled',false);
-        $('#equipment_resavation_field').attr('disabled',false);
-        $('#equipment_resavation_equipment').attr('disabled',false);
-        $('#equipment_resavation_resone').attr('disabled',false);
+        $('#equipment_resavation_date').attr('disabled',true);
+        $('#equipment_resavation_staff').attr('disabled',true);
+        $('#equipment_resavation_field').attr('disabled',true);
+        $('#equipment_resavation_equipment').attr('disabled',true);
+        $('#equipment_resavation_resone').attr('disabled',true);
 
     }
 
 }
+
+function setEquipmentResavationFieldId(){
+
+    $('#equipment_resavation_field').append(`<option value="">Field</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`field`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(field => {
+
+                $('#equipment_resavation_field').append(`<option value="${field.field_code}">${field.field_code}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+function setEquipmentId(){
+
+    $('#equipment_resavation_equipment').append(`<option value="">Equipment</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipment`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment => {
+
+                $('#equipment_resavation_equipment').append(`<option value="${equipment.equipment_Id}">${equipment.equipment_Id}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+
+function setEquipmentResavationStaffId(){
+
+    $('#equipment_resavation_staff').append(`<option value="">Staff</option>`) 
+
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`staff`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(staff => {
+                console.log(staff);
+                
+
+                $('#equipment_resavation_staff').append(`<option value="${staff.staff_id}">${staff.staff_id}</option>`) 
+            });
+
+        },
+        error:function(resualt){
+            console.log(resualt);
+        }
+    })
+
+}
+
+
+// ---------------------------------- View Equipment Resavation ---------------------------------------------
+
+
+$('#equipment_resavation_table').on('click' ,'#view_equipmentResavation' ,function(){
+
+    var equipmentResavationId = $(this).closest('tr').find('td').first().text();
+    console.log(equipmentResavationId);
+    
+    
+    $.ajax({
+        method:"GET",
+        url:baseUrl+`equipmentDetails?data=${equipmentResavationId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },success:function(resualt){
+
+            resualt.forEach(equipment =>{
+                $('#equipment_resavation_id').val(equipment.detailId);
+                $('#equipment_resavation_date').val(equipment.date);
+                $('#equipment_resavation_staff').val(equipment.staff_id);
+                $('#equipment_resavation_field').val(equipment.field_code);
+                $('#equipment_resavation_equipment').val(equipment.equipment_Id);
+                $('#equipment_resavation_resone').val(equipment.resone);
+            })
+            
+            navigateToPage('#equipment_reservation_registration');
+            activeNavBarButton('#equipment_nav');
+            chageEquipmentResavationState("View");
+
+        },
+        error:function(field){
+            console.log(field);
+        }
+    })
+
+})
