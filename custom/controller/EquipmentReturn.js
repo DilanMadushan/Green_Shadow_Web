@@ -182,3 +182,38 @@ function setEquipmentReturnStaffId(){
     })
 
 }
+
+//---------------------------------- View Equipment Return ---------------------------------------------
+
+
+$('#equupment_Return_table').on('click' ,'#view_equipmentReturn' ,function(){
+
+    var equipmentReservationId = $(this).closest('tr').find('td').first().text();
+
+    $.ajax({
+        method: "GET",
+        url: `${baseUrl}equipmentDetails?data=${equipmentReservationId}`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        success: function(result) {
+            result.forEach(equipment => {
+                $('#equipment_return_id').val(equipment.detailId);
+                $('#equipment_return_date').val(equipment.date);
+                $('#equipment_return_staff').val(equipment.staff_id);
+                $('#equipment_return_field').val(equipment.field_code);
+                $('#equipment_return_equipment').val(equipment.equipment_Id);
+                $('#equipment_return_resone').val(equipment.resone);
+            });
+
+            navigateToPage('#equipment_return_section_registration');
+            activeNavBarButton('#equipment_nav');
+            chageEquipmentReturnState("View");
+        },
+        error: function(error) {
+            console.error('Error fetching equipment details:', error);
+        }
+    });
+
+})
