@@ -237,6 +237,7 @@ $('#return_vehicle').click(function (){
 $('#add_vehicle_return').click(function (){
     navigateToPage('#vehicle_return_registration');
     activeNavBarButton('#vehicle_nav');
+    chageVehicleReturnState("Save")
 })
 
 

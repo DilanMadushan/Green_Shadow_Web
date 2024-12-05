@@ -74,3 +74,34 @@ function loadVehicleReturnTable(){
         }
     }
 }
+
+
+function chageVehicleReturnState(state){
+
+    if(state == "Save"){
+
+        $('#save_vehicle_return').show();
+
+        $('#vehicle_return_id').attr('disabled',true);
+        $('#vehicle_return_date').attr('disabled',false);
+        $('#vehicle_return_staff').attr('disabled',false);
+        $('#vehicle_return_vehicle').attr('disabled',false);
+        $('#vehicle_return_plane_no').attr('disabled',false);
+        $('#vehicle_return_resone').attr('disabled',false);
+
+    }
+
+    if(state == "View"){
+
+        $('#save_vehicle_return').hide();
+
+        $('#vehicle_return_id').attr('disabled',true);
+        $('#vehicle_return_date').attr('disabled',true);
+        $('#vehicle_return_staff').attr('disabled',true);
+        $('#vehicle_return_vehicle').attr('disabled',true);
+        $('#vehicle_return_plane_no').attr('disabled',true);
+        $('#vehicle_return_resone').attr('disabled',true);
+
+    }
+
+}
