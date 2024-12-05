@@ -99,6 +99,8 @@ function callPageFunction(page) {
     if(page == "#vehicle_resevation_section"){
         genarateNextVehicleResavation();
         loadVehicleResavationTable();
+        setVehicleResavationStaffId();
+        setVehicleResavationVehicleId();
     }
 
 
