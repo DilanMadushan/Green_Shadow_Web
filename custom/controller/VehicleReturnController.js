@@ -292,8 +292,8 @@ $('#cancel_vehicle_return').on('click' ,()=>{
 function clearVehicleReturnFields(){
     $('#vehicle_return_id').val('');
     $('#vehicle_return_date').val('');
-    $('#vehicle_return_staff').val('Staff');
-    $('#vehicle_return_vehicle').val('Vehicle');
+    $('#vehicle_return_staff').val('');
+    $('#vehicle_return_vehicle').val('');
     $('#vehicle_return_plane_no').val('');
     $('#vehicle_return_resone').val('');
 }

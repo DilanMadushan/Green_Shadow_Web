@@ -223,7 +223,7 @@ $('#save_staff').on('click' ,function(){
     };
 
 
-    if(!validateCrop(staffData)){
+    if(!validateStaff(staffData)){
         return
     }
 
@@ -260,7 +260,7 @@ $('#save_staff').on('click' ,function(){
 })
 
 
-function validateCrop(staff){
+function validateStaff(staff){
 
     console.log(staff);
     
@@ -367,7 +367,7 @@ $('#update_staff').on('click' ,()=>{
     };
 
 
-    if(!validateCrop(staffData)){
+    if(!validateStaff(staffData)){
         return
     }
 
@@ -449,7 +449,7 @@ function clearStaffFields(){
     $('#staff_first_name').val('');
     $('#staff_last_name').val('');
     $('#staff_dob').val('');
-    $('#staff_gender').val('Gender');
+    $('#staff_gender').val('');
     $('#staff_joind_date').val('');
     $('#staff_address1').val('');
     $('#staff_address2').val('');
@@ -458,7 +458,7 @@ function clearStaffFields(){
     $('#staff_address5').val('');
     $('#staff_mobile').val('');
     $('#staff_email').val('');
-    $('#staff_role').val('Role');
+    $('#staff_role').val('');
 }
 
 $('#staff_sort').on('input', ()=>{

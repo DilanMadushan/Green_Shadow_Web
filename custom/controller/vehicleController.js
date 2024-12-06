@@ -140,7 +140,7 @@ $('#save_vehicle').on('click' ,()=>{
 
       console.log(vehicleData);
 
-      if(!validateEquipment(vehicleData)){
+      if(!validateVehicle(vehicleData)){
         return
       }
       
@@ -176,7 +176,7 @@ $('#save_vehicle').on('click' ,()=>{
 })
 
 
-function validateEquipment(vehicleData){
+function validateVehicle(vehicleData){
 
     const showError = (message) => {
         Swal.fire({
@@ -295,7 +295,7 @@ $('#update_vehicle').on('click' ,()=>{
 
       console.log(vehicleData);
 
-      if(!validateEquipment(vehicleData)){
+      if(!validateVehicle(vehicleData)){
         return
       }
       
@@ -378,8 +378,8 @@ function clearVehicleFields(){
     $('#vehicle_id').val('');
     $('#vehicle_license').val('');
     $('#vehicle_category').val('');
-    $('#vehicle_fualType').val('Fuel Type');
-    $('#vehicle_status').val('Status');
+    $('#vehicle_fualType').val('');
+    $('#vehicle_status').val('');
     $('#vehicle_remarks').val('');
 }
 

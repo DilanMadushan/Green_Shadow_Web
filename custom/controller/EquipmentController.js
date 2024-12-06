@@ -121,7 +121,7 @@ function chageEquipmentState(state){
 
 // ---------------------------------- Save Equipment ---------------------------------------------
 
-$('#save_equipment').on('click' ,()=>{
+$('#save_equipment').on('click' ,function(){
     var equipmentData = {
         equipment_Id : $('#equipment_id').val(),
         name : $('#equipment_name').val(),
@@ -130,6 +130,9 @@ $('#save_equipment').on('click' ,()=>{
       }
 
       console.log(equipmentData);
+      
+      console.log(!validateEquipment(equipmentData));
+      
 
       if(!validateEquipment(equipmentData)){
         return
@@ -168,7 +171,7 @@ $('#save_equipment').on('click' ,()=>{
 
 
 function validateEquipment(equipmentData){
-
+    
     const showError = (message) => {
         Swal.fire({
             position: "top-end",
@@ -188,7 +191,12 @@ function validateEquipment(equipmentData){
         
     ];
 
+    console.log(requiredFields);
+    
+
     for(let i = 0; i < requiredFields.length; i++){
+        console.log(i + " fields");
+        
         if(requiredFields[i].field === ""){
             showError(requiredFields[i].message);
             return false;
@@ -363,8 +371,8 @@ $('#equipment_table').on('click' ,'#equipment_delete' ,function(){
 function clearEquipmentFields(){
     $('#equipment_id').val(''),
     $('#equipment_name').val(''),
-    $('#equipment_type').val('Status'),
-    $('#equipment_status').val('Status')
+    $('#equipment_type').val(''),
+    $('#equipment_status').val('')
 }
 
 $('#cancel_equipment').on('click' ,() => {

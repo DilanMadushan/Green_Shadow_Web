@@ -237,6 +237,7 @@ function validateCrop(crop){
             timer: 1500
         });
     };
+    
 
     const requiredFields = [
         {field: crop.crop_code, message: "Crop Code is required"},
@@ -249,7 +250,7 @@ function validateCrop(crop){
     ];
 
     for(let i = 0; i < requiredFields.length; i++){
-        if(requiredFields[i].field === ""){
+        if(requiredFields[i].field === "" || requiredFields[i].field == null){
             showError(requiredFields[i].message);
             return false;
         }
@@ -437,9 +438,9 @@ function clearCropFields(){
     $('#cropImg_previw').attr("src", "images/img.png");
     $('#cropbase64_input').val('');
     $('#crop_input').val("");
-    $('#crop_catagary').val('Category');
+    $('#crop_catagary').val('');
     $('#crop_Season').val("");
-    $('#crop_field_ids').val('Field');
+    $('#crop_field_ids').val('');
 }
 
 $('#crop_sort').on('input' , function(){
