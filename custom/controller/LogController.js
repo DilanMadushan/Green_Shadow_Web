@@ -12,7 +12,7 @@ function genarateNextLogId(){
                 var num = parseInt(parts[1]);
                 var genNum = (num+1).toString();
                 if (genNum.length == 1){
-                    $("#log_code").val("LOG"+genNum);
+                    $("#log_code").val("LOG00"+genNum);
                 }else if(genNum.length == 2){
                     $("#log_code").val("LOG0"+genNum);
                 }
